@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>サブスクガイド | 毎月届く定期便・サブスク比較メディア</title>
+<meta name="description" content="食品・美容・宅食など人気のサブスクリプションサービスを徹底比較。あなたにぴったりのサブスクが見つかる比較メディア。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #1a1a2e;
+    --accent: #c8a96e;
+    --accent-light: #f5edd8;
+    --surface: #fafaf8;
+    --surface2: #f2f0eb;
+    --text: #1a1a1a;
+    --text-muted: #6b6b6b;
+    --border: #e0ddd5;
+    --white: #ffffff;
+    --green: #2d6a4f;
+    --green-light: #e8f5ee;
+    --coral: #c0392b;
+    --coral-light: #fdf2f0;
+    --blue: #1a4f7a;
+    --blue-light: #eaf2fb;
+    --radius: 12px;
+    --radius-sm: 6px;
+    --shadow: 0 2px 20px rgba(0,0,0,0.08);
+    --shadow-hover: 0 8px 40px rgba(0,0,0,0.14);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--surface);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    background: var(--primary);
+    padding: 0 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.25rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+
+  .logo span {
+    color: #fff;
+    font-weight: 300;
+    font-size: 0.75rem;
+    display: block;
+    letter-spacing: 0.15em;
+    font-family: 'Noto Sans JP', sans-serif;
+    margin-top: -2px;
+  }
+
+  nav { display: flex; gap: 2rem; }
+
+  nav a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--accent); }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(135deg, var(--primary) 0%, #16213e 100%);
+    color: white;
+    padding: 100px 5vw 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,169,110,0.15) 0%, transparent 70%);
+  }
+
+  .hero-inner {
+    max-width: 680px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(200,169,110,0.2);
+    border: 1px solid rgba(200,169,110,0.4);
+    color: var(--accent);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero h1 em {
+    color: var(--accent);
+    font-style: normal;
+  }
+
+  .hero p {
+    color: rgba(255,255,255,0.75);
+    font-size: 1rem;
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 14px 32px;
+    border-radius: var(--radius);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: all 0.2s;
+  }
+  .btn-primary:hover { background: #d4b57a; transform: translateY(-1px); }
+
+  .btn-ghost {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.85);
+    font-size: 0.9rem;
+    padding: 13px 28px;
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.08); }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 4rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    flex-wrap: wrap;
+  }
+
+  .stat-item { }
+  .stat-num {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.8rem;
+    color: var(--accent);
+    display: block;
+    font-weight: 600;
+  }
+  .stat-label {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.05em;
+  }
+
+  /* ===== SECTION COMMON ===== */
+  section { padding: 80px 5vw; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .section-header h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
+    color: var(--primary);
+  }
+
+  .section-header p {
+    color: var(--text-muted);
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
+  }
+
+  /* ===== CATEGORY TABS ===== */
+  .categories-bg { background: var(--white); }
+
+  .category-tabs {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+
+  .tab-btn {
+    padding: 8px 20px;
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+
+  .tab-btn.active, .tab-btn:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+  }
+
+  /* ===== CARD GRID ===== */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: all 0.25s;
+    position: relative;
+  }
+
+  .card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-3px);
+  }
+
+  .card-badge {
+    position: absolute;
+    top: 14px; left: 14px;
+    background: var(--accent);
+    color: var(--primary);
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 12px;
+    letter-spacing: 0.05em;
+    z-index: 1;
+  }
+
+  .card-badge.new { background: var(--green); color: white; }
+  .card-badge.popular { background: var(--coral); color: white; }
+
+  .card-img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    background: var(--surface2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+  }
+
+  .card-body { padding: 1.25rem; }
+
+  .card-category {
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+  }
+
+  .card h3 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+
+  .card-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+    border-top: 1px solid var(--surface2);
+  }
+
+  .card-price {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+  .card-price strong {
+    font-size: 1.1rem;
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  .card-stars {
+    font-size: 0.78rem;
+    color: var(--accent);
+  }
+
+  .card-link {
+    display: block;
+    margin-top: 1rem;
+    text-align: center;
+    background: var(--primary);
+    color: white;
+    padding: 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s;
+    letter-spacing: 0.05em;
+  }
+  .card-link:hover { background: #2a2a4a; }
+
+  /* ===== HOW IT WORKS ===== */
+  .howto-bg { background: var(--surface2); }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    position: relative;
+  }
+
+  .step {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background: var(--white);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+  }
+
+  .step-num {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+  }
+
+  .step h3 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .step p {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  /* ===== RANKING ===== */
+  .ranking-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+
+  .ranking-item {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    transition: all 0.2s;
+  }
+  .ranking-item:hover { box-shadow: var(--shadow); transform: translateX(3px); }
+
+  .rank-num {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--border);
+    min-width: 32px;
+    text-align: center;
+  }
+
+  .rank-num.gold { color: #c8a96e; }
+  .rank-num.silver { color: #9aa0ab; }
+  .rank-num.bronze { color: #b87333; }
+
+  .rank-icon { font-size: 2.2rem; }
+
+  .rank-info { flex: 1; }
+  .rank-name {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 600;
+    font-size: 0.98rem;
+    color: var(--primary);
+    margin-bottom: 0.2rem;
+  }
+  .rank-desc { font-size: 0.8rem; color: var(--text-muted); }
+
+  .rank-meta { text-align: right; }
+  .rank-price { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.3rem; }
+  .rank-price strong { font-size: 1rem; color: var(--primary); font-weight: 700; }
+  .rank-btn {
+    display: inline-block;
+    background: var(--accent-light);
+    color: var(--primary);
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    border: 1px solid var(--accent);
+    transition: all 0.2s;
+  }
+  .rank-btn:hover { background: var(--accent); color: var(--primary); }
+
+  /* ===== NEWSLETTER ===== */
+  .newsletter-bg {
+    background: var(--primary);
+    padding: 80px 5vw;
+  }
+
+  .newsletter-inner {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .newsletter-inner h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.8rem;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+  .newsletter-inner p { color: rgba(255,255,255,0.65); margin-bottom: 2rem; font-size: 0.9rem; }
+
+  .email-form {
+    display: flex;
+    gap: 0.75rem;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  .email-form input {
+    flex: 1;
+    padding: 12px 16px;
+    border-radius: var(--radius);
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    color: white;
+    font-size: 0.9rem;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+  .email-form input::placeholder { color: rgba(255,255,255,0.4); }
+  .email-form input:focus { outline: none; border-color: var(--accent); }
+
+  .email-form button {
+    background: var(--accent);
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 12px 22px;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-family: 'Noto Sans JP', sans-serif;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .email-form button:hover { background: #d4b57a; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: #111122;
+    color: rgba(255,255,255,0.5);
+    padding: 3rem 5vw;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.1rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-links a {
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--accent); }
+
+  .footer-disclaimer {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.25);
+    max-width: 600px;
+    margin: 1rem auto 0;
+    line-height: 1.6;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 640px) {
+    nav { display: none; }
+    .hero-stats { gap: 1.5rem; }
+    .email-form { flex-direction: column; }
+    .ranking-item { flex-wrap: wrap; }
+    .rank-meta { width: 100%; text-align: left; display: flex; gap: 1rem; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="/" class="logo">
+    サブスクガイド
+    <span>SUBSCRIPTION MEDIA</span>
+  </a>
+  <nav>
+    <a href="#food">食品・グルメ</a>
+    <a href="#beauty">美容</a>
+    <a href="#lifestyle">生活</a>
+    <a href="#ranking">ランキング</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">SUBSCRIPTION GUIDE 2026</div>
+    <h1>毎月届く、<em>心ときめく</em><br>サブスクを見つけよう</h1>
+    <p>食品・美容・宅食など100以上のサブスクを徹底比較。あなたのライフスタイルにぴったりの定期便が、きっと見つかります。</p>
+    <div class="hero-cta">
+      <a href="#ranking" class="btn-primary">ランキングを見る</a>
+      <a href="#food" class="btn-ghost">カテゴリで探す</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num">100+</span>
+        <span class="stat-label">掲載サービス数</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">8</span>
+        <span class="stat-label">カテゴリ</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">毎週</span>
+        <span class="stat-label">情報更新</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="howto-bg">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">How to use</span>
+      <h2>サブスクガイドの使い方</h2>
+      <p>3ステップで理想のサブスクが見つかります</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>カテゴリを選ぶ</h3>
+        <p>食品・美容・宅食など、気になるカテゴリを選択してください。</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>サービスを比較</h3>
+        <p>料金・内容・評判を詳しく比較。口コミも参考にできます。</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>お申し込み</h3>
+        <p>気に入ったサービスのページへ。初回限定のお得なキャンペーンも。</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>毎月届いて楽しむ</h3>
+        <p>プロが厳選した商品が毎月定期的にお手元へ届きます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOD SUBSCRIPTION CARDS -->
+<section id="food" class="categories-bg">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">Category</span>
+      <h2>食品・グルメのサブスク</h2>
+      <p>プロが厳選した旬の食材や名店の味が、毎月自宅に届きます</p>
+    </div>
+    <div class="category-tabs">
+      <button class="tab-btn active">すべて</button>
+      <button class="tab-btn">野菜・食材</button>
+      <button class="tab-btn">ミールキット</button>
+      <button class="tab-btn">お菓子</button>
+      <button class="tab-btn">お肉・海鮮</button>
+      <button class="tab-btn">お酒</button>
+    </div>
+    <div class="card-grid">
+
+      <div class="card">
+        <div class="card-badge popular">人気 No.1</div>
+        <div class="card-img">🥗</div>
+        <div class="card-body">
+          <div class="card-category">野菜・食材</div>
+          <h3>Oisix（オイシックス）</h3>
+          <p class="card-desc">有機・特別栽培野菜や添加物を可能な限り使わない加工食品を定期便でお届け。安全・安心にこだわる家族に人気。</p>
+          <div class="card-meta">
+            <div class="card-price">月額 <strong>¥5,000〜</strong></div>
+            <div class="card-stars">★★★★★ 4.8</div>
+          </div>
+          <a href="#" class="card-link">詳細を見る →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-badge new">初回割引</div>
+        <div class="card-img">🍱</div>
+        <div class="card-body">
+          <div class="card-category">宅食・ミールキット</div>
+          <h3>三ツ星ファーム</h3>
+          <p class="card-desc">ミシュランシェフ監修の冷凍宅食サービス。栄養バランス抜群のメインディッシュが毎週届く。電子レンジで5分調理。</p>
+          <div class="card-meta">
+            <div class="card-price">月額 <strong>¥3,500〜</strong></div>
+            <div class="card-stars">★★★★★ 4.7</div>
+          </div>
+          <a href="#" class="card-link">詳細を見る →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-img">🍞</div>
+        <div class="card-body">
+          <div class="card-category">パン</div>
+          <h3>パンスク</h3>
+          <p class="card-desc">全国100店舗以上のこだわりパン屋から厳選した冷凍パンが定期便で届く。毎月違うパン屋との出会いが楽しい。</p>
+          <div class="card-meta">
+            <div class="card-price">月額 <strong>¥3,990〜</strong></div>
+            <div class="card-stars">★★★★☆ 4.5</div>
+          </div>
+          <a href="#" class="card-link">詳細を見る →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-img">🍬</div>
+        <div class="card-body">
+          <div class="card-category">お菓子・スイーツ</div>
+          <h3>snaq.me（スナックミー）</h3>
+          <p class="card-desc">添加物不使用の天然素材おやつが毎月届く。自分好みにカスタマイズ可能なパーソナルおやつBox。</p>
+          <div class="card-meta">
+            <div class="card-price">月額 <strong>¥1,980〜</strong></div>
+            <div class="card-stars">★★★★☆ 4.4</div>
+          </div>
+          <a href="#" class="card-link">詳細を見る →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-img">🥩</div>
+        <div class="card-body">
+          <div class="card-category">肉・海鮮</div>
+          <h3>坂ノ途中</h3>
+          <p class="card-desc">農薬・化学肥料不使用にこだわった有機野菜の定期宅配。旬の野菜が500種類以上のラインナップから毎週届く。</p>
+          <div class="card-meta">
+            <div class="card-price">月額 <strong>¥2,480〜</strong></div>
+            <div class="card-stars">★★★★☆ 4.6</div>
+          </div>
+          <a href="#" class="card-link">詳細を見る →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-img">🍶</div>
+        <div class="card-body">
+          <div class="card-category">お酒</div>
+          <h3>saketaku（サケタク）</h3>
+          <p class="card-desc">1.5万種の日本酒からプロが厳選。知られざる銘酒との出会いを毎月楽しめる日本酒専門定期便。</p>
+          <div class="card-meta">
+            <div class="card-price">月額 <strong>¥3,900〜</strong></div>
+            <div class="card-stars">★★★★★ 4.7</div>
+          </div>
+          <a href="#" class="card-link">詳細を見る →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- RANKING -->
+<section id="ranking" style="background: var(--surface2);">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">Ranking</span>
+      <h2>総合人気ランキング</h2>
+      <p>2026年4月 / 読者が選ぶサブスクベスト10</p>
+    </div>
+    <ul class="ranking-list">
+
+      <li class="ranking-item">
+        <span class="rank-num gold">1</span>
+        <span class="rank-icon">🥗</span>
+        <div class="rank-info">
+          <div class="rank-name">Oisix（オイシックス）</div>
+          <div class="rank-desc">有機野菜・ミールキット ／ 送料無料プランあり ／ 家族向け</div>
+        </div>
+        <div class="rank-meta">
+          <div class="rank-price">月額 <strong>¥5,000〜</strong></div>
+          <a href="#" class="rank-btn">公式サイト</a>
+        </div>
+      </li>
+
+      <li class="ranking-item">
+        <span class="rank-num silver">2</span>
+        <span class="rank-icon">🍱</span>
+        <div class="rank-info">
+          <div class="rank-name">三ツ星ファーム</div>
+          <div class="rank-desc">シェフ監修冷凍宅食 ／ 1食あたり約500円〜 ／ 一人暮らしに最適</div>
+        </div>
+        <div class="rank-meta">
+          <div class="rank-price">月額 <strong>¥3,500〜</strong></div>
+          <a href="#" class="rank-btn">公式サイト</a>
+        </div>
+      </li>
+
+      <li class="ranking-item">
+        <span class="rank-num bronze">3</span>
+        <span class="rank-icon">🍞</span>
+        <div class="rank-info">
+          <div class="rank-name">パンスク</div>
+          <div class="rank-desc">全国100店舗の冷凍パン ／ 毎月驚きの出会い ／ ギフトにも人気</div>
+        </div>
+        <div class="rank-meta">
+          <div class="rank-price">月額 <strong>¥3,990〜</strong></div>
+          <a href="#" class="rank-btn">公式サイト</a>
+        </div>
+      </li>
+
+      <li class="ranking-item">
+        <span class="rank-num">4</span>
+        <span class="rank-icon">🍬</span>
+        <div class="rank-info">
+          <div class="rank-name">snaq.me（スナックミー）</div>
+          <div class="rank-desc">天然素材おやつ ／ パーソナライズBOX ／ ご褒美おやつに</div>
+        </div>
+        <div class="rank-meta">
+          <div class="rank-price">月額 <strong>¥1,980〜</strong></div>
+          <a href="#" class="rank-btn">公式サイト</a>
+        </div>
+      </li>
+
+      <li class="ranking-item">
+        <span class="rank-num">5</span>
+        <span class="rank-icon">🌿</span>
+        <div class="rank-info">
+          <div class="rank-name">坂ノ途中</div>
+          <div class="rank-desc">有機・無農薬野菜 ／ 初回割引あり ／ 環境にも配慮</div>
+        </div>
+        <div class="rank-meta">
+          <div class="rank-price">月額 <strong>¥2,480〜</strong></div>
+          <a href="#" class="rank-btn">公式サイト</a>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter-bg">
+  <div class="newsletter-inner">
+    <h2>新着情報をメールで受け取る</h2>
+    <p>お得なキャンペーン情報や新サービスの速報をお届けします。登録無料。</p>
+    <form class="email-form" onsubmit="return false;">
+      <input type="email" placeholder="メールアドレスを入力">
+      <button type="submit">登録する</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">サブスクガイド</span>
+  <div class="footer-links">
+    <a href="#">プライバシーポリシー</a>
+    <a href="#">免責事項</a>
+    <a href="#">広告掲載について</a>
+    <a href="#">お問い合わせ</a>
+    <a href="#">運営者情報</a>
+  </div>
+  <p class="footer-disclaimer">
+    当サイトはアフィリエイト広告（A8.net等）を利用しています。掲載されている情報は、記事作成時点のものです。サービス内容・料金は変更になる場合がありますので、必ず公式サイトをご確認ください。
+  </p>
+  <p style="margin-top: 1.5rem; font-size: 0.72rem;">© 2026 サブスクガイド. All rights reserved.</p>
+</footer>
+
+<script>
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
