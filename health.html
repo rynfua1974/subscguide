@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HealthSelect | 健康食品・サプリ・ダイエット比較ガイド2026</title>
+<meta name="description" content="専門家監修。効果・成分・価格を徹底比較した健康食品・サプリメント・ダイエット商品のおすすめランキング。あなたに合った一品が見つかる。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:    #0d1b2a;
+  --navy2:   #1a2e45;
+  --teal:    #0a7c6e;
+  --teal2:   #0d9e8d;
+  --teal-lt: #e0f5f2;
+  --gold:    #c9a84c;
+  --gold-lt: #fdf6e3;
+  --coral:   #e05a3a;
+  --cream:   #faf9f6;
+  --cream2:  #f2f0ea;
+  --white:   #ffffff;
+  --text:    #1a1a1a;
+  --text2:   #444;
+  --text3:   #888;
+  --border:  #e2dfd6;
+  --r:       12px;
+  --r-sm:    6px;
+  --shadow:  0 4px 24px rgba(13,27,42,0.08);
+  --shadow2: 0 12px 48px rgba(13,27,42,0.14);
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Noto Sans JP',sans-serif;
+  background:var(--cream);
+  color:var(--text);
+  font-size:15px;
+  line-height:1.8;
+  overflow-x:hidden;
+}
+
+/* ── HEADER ── */
+.hdr{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  background:rgba(13,27,42,0.97);
+  backdrop-filter:blur(16px);
+  height:60px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5vw;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.hdr-logo{
+  font-family:'Playfair Display',serif;
+  font-size:1.3rem;color:var(--white);
+  text-decoration:none;letter-spacing:0.04em;
+  display:flex;align-items:center;gap:10px;
+}
+.hdr-logo-dot{
+  width:10px;height:10px;border-radius:50%;
+  background:var(--teal2);
+  box-shadow:0 0 10px rgba(10,124,110,0.6);
+}
+.hdr-nav{display:flex;gap:1.6rem;}
+.hdr-nav a{
+  color:rgba(255,255,255,0.6);font-size:0.82rem;
+  text-decoration:none;letter-spacing:0.04em;
+  transition:color 0.2s;
+}
+.hdr-nav a:hover{color:var(--teal2);}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  background:var(--navy);
+  display:flex;align-items:center;
+  padding:80px 5vw 60px;
+  position:relative;overflow:hidden;
+}
+.hero-bg-circle{
+  position:absolute;border-radius:50%;pointer-events:none;
+}
+.hbc1{
+  width:700px;height:700px;
+  background:radial-gradient(circle,rgba(10,124,110,0.18) 0%,transparent 65%);
+  top:-200px;right:-150px;
+}
+.hbc2{
+  width:400px;height:400px;
+  background:radial-gradient(circle,rgba(201,168,76,0.1) 0%,transparent 70%);
+  bottom:-100px;left:10%;
+}
+.hero-grid{
+  max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 420px;
+  gap:4vw;align-items:center;
+  position:relative;z-index:1;width:100%;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(10,124,110,0.15);
+  border:1px solid rgba(10,158,141,0.3);
+  color:var(--teal2);font-size:0.72rem;
+  letter-spacing:0.18em;padding:5px 14px;
+  border-radius:20px;margin-bottom:1.5rem;
+}
+.hero-eyebrow-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--teal2);
+  animation:blink 2s ease-in-out infinite;
+}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.hero-text h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,4.5vw,3.2rem);
+  font-weight:700;color:var(--white);
+  line-height:1.3;margin-bottom:1.25rem;
+  letter-spacing:0.02em;
+}
+.hero-text h1 em{
+  color:var(--teal2);font-style:italic;
+}
+.hero-text p{
+  color:rgba(255,255,255,0.65);
+  font-size:0.95rem;max-width:460px;
+  margin-bottom:2.5rem;font-weight:300;line-height:2;
+}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-g{
+  display:inline-block;
+  background:linear-gradient(135deg,var(--teal),var(--teal2));
+  color:var(--white);font-weight:700;font-size:0.9rem;
+  padding:14px 32px;border-radius:var(--r);
+  text-decoration:none;letter-spacing:0.05em;
+  transition:all 0.25s;
+  box-shadow:0 4px 20px rgba(10,124,110,0.35);
+}
+.btn-g:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(10,124,110,0.45);}
+.btn-o{
+  display:inline-block;
+  border:1px solid rgba(255,255,255,0.25);
+  color:rgba(255,255,255,0.8);font-size:0.88rem;
+  padding:13px 26px;border-radius:var(--r);
+  text-decoration:none;transition:all 0.2s;
+}
+.btn-o:hover{background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.45);}
+
+/* ヒーロー右：スコアカード */
+.hero-score-wrap{
+  display:flex;flex-direction:column;gap:1rem;
+}
+.score-card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:var(--r);
+  padding:1.1rem 1.25rem;
+  display:flex;align-items:center;gap:1rem;
+  transition:all 0.25s;
+  animation:slideIn 0.5s ease both;
+}
+.score-card:nth-child(1){animation-delay:0.1s;}
+.score-card:nth-child(2){animation-delay:0.2s;}
+.score-card:nth-child(3){animation-delay:0.3s;}
+.score-card:hover{
+  background:rgba(10,158,141,0.1);
+  border-color:rgba(10,158,141,0.3);
+  transform:translateX(-4px);
+}
+@keyframes slideIn{
+  from{opacity:0;transform:translateX(20px);}
+  to{opacity:1;transform:translateX(0);}
+}
+.sc-rank{
+  width:40px;height:40px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;
+  flex-shrink:0;
+}
+.sc-rank.g{background:#fef3c7;color:#c8960a;}
+.sc-rank.s{background:#f0f0f0;color:#6b7280;}
+.sc-rank.b{background:#fde8dc;color:#b87333;}
+.sc-info{flex:1;}
+.sc-name{color:var(--white);font-size:0.85rem;font-weight:500;}
+.sc-cat{color:rgba(255,255,255,0.45);font-size:0.7rem;margin-top:1px;}
+.sc-score{
+  font-family:'Playfair Display',serif;
+  font-size:1.4rem;font-weight:700;
+  color:var(--teal2);
+}
+.sc-score span{font-size:0.7rem;color:rgba(255,255,255,0.4);font-family:'Noto Sans JP',sans-serif;}
+
+.hero-note{
+  text-align:center;
+  color:rgba(255,255,255,0.3);font-size:0.72rem;
+  letter-spacing:0.08em;margin-top:0.5rem;
+}
+
+/* ── TRUST ── */
+.trust{
+  background:var(--navy2);
+  border-top:1px solid rgba(255,255,255,0.06);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  padding:1.25rem 5vw;
+}
+.trust-inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;justify-content:center;gap:4vw;flex-wrap:wrap;
+}
+.trust-item{
+  display:flex;align-items:center;gap:8px;
+  color:rgba(255,255,255,0.5);font-size:0.8rem;
+}
+.trust-item strong{color:var(--teal2);}
+
+/* ── SECTION BASE ── */
+section{padding:90px 5vw;}
+.si{max-width:1100px;margin:0 auto;}
+.s-eye{font-size:0.72rem;letter-spacing:0.2em;color:var(--teal);text-transform:uppercase;display:block;margin-bottom:0.5rem;}
+.s-ttl{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.5rem,3vw,2.1rem);font-weight:700;
+  color:var(--navy);line-height:1.35;margin-bottom:0.75rem;
+}
+.s-desc{color:var(--text3);font-size:0.9rem;max-width:520px;}
+.s-hdr{margin-bottom:3.5rem;}
+.s-hdr.c{text-align:center;}
+.s-hdr.c .s-desc{margin:0 auto;}
+
+/* ── CATEGORY PILLS ── */
+.cats{
+  display:flex;gap:0.6rem;flex-wrap:wrap;
+  justify-content:center;margin-bottom:2.5rem;
+}
+.cat-pill{
+  padding:7px 18px;border-radius:20px;
+  border:1px solid var(--border);
+  background:var(--white);color:var(--text3);
+  font-size:0.82rem;cursor:pointer;
+  transition:all 0.2s;font-family:'Noto Sans JP',sans-serif;
+}
+.cat-pill.on,.cat-pill:hover{
+  background:var(--navy);border-color:var(--navy);color:var(--white);
+}
+
+/* ── PRODUCT CARDS ── */
+.prod-bg{background:var(--cream2);}
+.prod-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:1.5rem;
+}
+.prod-card{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:all 0.28s;
+  position:relative;
+}
+.prod-card:hover{
+  box-shadow:var(--shadow2);
+  transform:translateY(-5px);
+}
+.prod-card.featured{
+  border:2px solid var(--teal2);
+}
+.featured-label{
+  position:absolute;top:0;left:0;right:0;
+  background:var(--teal2);
+  color:var(--white);
+  font-size:0.72rem;font-weight:700;
+  text-align:center;padding:4px;
+  letter-spacing:0.1em;
+}
+.prod-head{
+  background:var(--navy);
+  padding:2rem 1.5rem 1.5rem;
+  position:relative;overflow:hidden;
+}
+.prod-head::after{
+  content:'';
+  position:absolute;bottom:-1px;left:0;right:0;height:30px;
+  background:var(--white);
+  clip-path:ellipse(55% 100% at 50% 100%);
+}
+.prod-emoji{font-size:3rem;display:block;margin-bottom:0.5rem;}
+.prod-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;font-weight:700;color:var(--white);
+}
+.prod-maker{color:rgba(255,255,255,0.5);font-size:0.75rem;margin-top:2px;}
+.prod-body{padding:1.5rem;flex:1;}
+.prod-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1rem;}
+.prod-tag{
+  background:var(--teal-lt);color:var(--teal);
+  font-size:0.68rem;font-weight:500;
+  padding:3px 10px;border-radius:10px;
+}
+.prod-desc{font-size:0.83rem;color:var(--text2);line-height:1.85;margin-bottom:1.25rem;}
+.prod-spec{
+  background:var(--cream);border-radius:var(--r-sm);
+  padding:1rem;margin-bottom:1.25rem;
+  display:flex;flex-direction:column;gap:0.5rem;
+}
+.spec-row{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:0.8rem;
+}
+.spec-label{color:var(--text3);}
+.spec-val{font-weight:500;color:var(--text);}
+.prod-stars{color:#f59e0b;font-size:0.88rem;}
+.prod-rating{font-size:0.72rem;color:var(--text3);margin-left:4px;}
+.prod-foot{padding:0 1.5rem 1.5rem;}
+.btn-aff{
+  display:block;
+  background:var(--navy);color:var(--white);
+  text-align:center;padding:13px;
+  border-radius:var(--r-sm);
+  font-size:0.88rem;font-weight:500;
+  text-decoration:none;letter-spacing:0.05em;
+  transition:background 0.2s;
+}
+.btn-aff:hover{background:var(--navy2);}
+.btn-aff small{
+  display:block;font-size:0.68rem;
+  color:rgba(255,255,255,0.4);
+  margin-top:2px;font-weight:300;
+}
+
+/* ── RANKING ── */
+.rank-bg{background:var(--cream);}
+.rank-list{display:flex;flex-direction:column;gap:1.1rem;}
+.rank-row{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  padding:1.1rem 1.4rem;
+  display:flex;align-items:center;gap:1.1rem;
+  transition:all 0.22s;
+}
+.rank-row:hover{box-shadow:var(--shadow);transform:translateX(4px);}
+.rank-no{
+  min-width:44px;height:44px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;
+  font-size:1.2rem;font-weight:700;flex-shrink:0;
+}
+.rank-no.g{background:#fef3c7;color:#b8860b;}
+.rank-no.s{background:#f3f4f6;color:#6b7280;}
+.rank-no.b{background:#fde8dc;color:#b87333;}
+.rank-no.n{background:var(--cream2);color:var(--text3);font-size:1rem;}
+.rank-ico{font-size:2rem;flex-shrink:0;}
+.rank-info{flex:1;min-width:0;}
+.rank-nm{
+  font-weight:700;font-size:0.93rem;color:var(--navy);
+  margin-bottom:0.15rem;
+}
+.rank-sub{font-size:0.77rem;color:var(--text3);}
+.rank-rt{text-align:right;flex-shrink:0;}
+.rank-price{font-size:0.75rem;color:var(--text3);margin-bottom:0.35rem;}
+.rank-price strong{font-size:0.98rem;color:var(--navy);font-weight:700;}
+.btn-r{
+  display:inline-block;
+  background:var(--gold-lt);color:var(--navy);
+  border:1px solid var(--gold);
+  font-size:0.75rem;font-weight:700;
+  padding:6px 14px;border-radius:var(--r-sm);
+  text-decoration:none;white-space:nowrap;
+  transition:all 0.2s;
+}
+.btn-r:hover{background:var(--gold);color:var(--navy);}
+
+/* ── POINT SECTION ── */
+.point-bg{background:var(--navy);}
+.point-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:1.5rem;
+}
+.point-card{
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:var(--r);
+  padding:2rem 1.5rem;
+  position:relative;overflow:hidden;
+  transition:all 0.25s;
+}
+.point-card::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--teal),var(--teal2));
+}
+.point-card:hover{
+  background:rgba(10,158,141,0.08);
+  border-color:rgba(10,158,141,0.3);
+  transform:translateY(-3px);
+}
+.point-num{
+  font-family:'Playfair Display',serif;
+  font-size:2.5rem;font-weight:700;
+  color:rgba(10,158,141,0.3);
+  line-height:1;margin-bottom:0.75rem;
+}
+.point-card h3{
+  font-size:0.95rem;font-weight:700;
+  color:var(--white);margin-bottom:0.6rem;
+}
+.point-card p{font-size:0.82rem;color:rgba(255,255,255,0.5);line-height:1.85;}
+
+/* ── VOICE ── */
+.voice-bg{background:var(--cream2);}
+.voice-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+  gap:1.5rem;
+}
+.voice-card{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  padding:1.75rem;position:relative;
+}
+.vc-q{
+  font-family:'Playfair Display',serif;
+  font-size:4rem;color:var(--teal-lt);
+  position:absolute;top:-8px;left:14px;
+  line-height:1;
+}
+.vc-txt{
+  font-size:0.84rem;color:var(--text2);
+  line-height:1.9;margin-bottom:1.25rem;padding-top:1rem;
+}
+.vc-meta{display:flex;align-items:center;gap:10px;}
+.vc-av{
+  width:38px;height:38px;border-radius:50%;
+  background:var(--teal-lt);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;flex-shrink:0;
+}
+.vc-name{font-size:0.8rem;font-weight:700;color:var(--navy);}
+.vc-tag{font-size:0.7rem;color:var(--text3);}
+.vc-stars{color:#f59e0b;font-size:0.8rem;margin-top:1px;}
+
+/* ── FAQ ── */
+.faq-bg{background:var(--cream);}
+.faq-wrap{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:0.75rem;}
+.faq-item{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r);overflow:hidden;
+}
+.faq-q{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1rem 1.4rem;cursor:pointer;
+  font-size:0.88rem;font-weight:500;color:var(--navy);
+  gap:1rem;user-select:none;
+}
+.faq-q:hover{background:var(--cream);}
+.faq-ic{
+  width:24px;height:24px;border-radius:50%;
+  background:var(--cream2);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-size:14px;color:var(--navy);
+  transition:transform 0.25s,background 0.2s;
+}
+.faq-item.open .faq-ic{transform:rotate(45deg);background:var(--navy);color:var(--white);}
+.faq-a{
+  max-height:0;overflow:hidden;
+  transition:max-height 0.3s ease,padding 0.25s;
+  padding:0 1.4rem;
+  font-size:0.83rem;color:var(--text2);line-height:1.85;
+}
+.faq-item.open .faq-a{max-height:200px;padding:0 1.4rem 1.2rem;}
+
+/* ── CTA ── */
+.cta-sec{
+  background:var(--navy);
+  padding:90px 5vw;text-align:center;
+  position:relative;overflow:hidden;
+}
+.cta-sec::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 0%,rgba(10,124,110,0.25) 0%,transparent 60%);
+}
+.cta-in{position:relative;z-index:1;max-width:580px;margin:0 auto;}
+.cta-eye{
+  display:inline-block;
+  background:rgba(10,158,141,0.15);
+  border:1px solid rgba(10,158,141,0.3);
+  color:var(--teal2);font-size:0.72rem;
+  letter-spacing:0.16em;padding:5px 14px;border-radius:20px;
+  margin-bottom:1.5rem;
+}
+.cta-in h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.6rem,3.5vw,2.2rem);
+  font-weight:700;color:var(--white);
+  margin-bottom:1rem;line-height:1.4;
+}
+.cta-in p{color:rgba(255,255,255,0.6);font-size:0.9rem;margin-bottom:2.5rem;font-weight:300;}
+
+/* ── FOOTER ── */
+.ftr{background:#080f18;padding:60px 5vw 40px;}
+.ftr-top{
+  max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;
+  padding-bottom:2.5rem;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  margin-bottom:2rem;
+}
+.ftr-brand-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;color:var(--white);
+  display:flex;align-items:center;gap:8px;margin-bottom:0.75rem;
+}
+.ftr-brand p{font-size:0.78rem;color:rgba(255,255,255,0.3);line-height:1.8;}
+.ftr-col h4{
+  font-size:0.75rem;color:rgba(255,255,255,0.4);
+  letter-spacing:0.16em;text-transform:uppercase;margin-bottom:1rem;
+}
+.ftr-col ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+.ftr-col a{font-size:0.8rem;color:rgba(255,255,255,0.35);text-decoration:none;transition:color 0.2s;}
+.ftr-col a:hover{color:var(--teal2);}
+.ftr-btm{
+  max-width:1100px;margin:0 auto;
+  display:flex;justify-content:space-between;align-items:flex-start;
+  gap:1rem;flex-wrap:wrap;
+}
+.ftr-copy{font-size:0.72rem;color:rgba(255,255,255,0.2);}
+.ftr-disc{font-size:0.7rem;color:rgba(255,255,255,0.18);max-width:580px;line-height:1.7;}
+
+@media(max-width:768px){
+  .hdr-nav{display:none;}
+  .hero-grid{grid-template-columns:1fr;}
+  .hero-score-wrap{display:none;}
+  .ftr-top{grid-template-columns:1fr;gap:2rem;}
+  .ftr-btm{flex-direction:column;}
+  .rank-row{flex-wrap:wrap;}
+  .rank-rt{width:100%;display:flex;gap:1rem;align-items:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hdr">
+  <a href="/" class="hdr-logo">
+    <div class="hdr-logo-dot"></div>
+    HealthSelect
+  </a>
+  <nav class="hdr-nav">
+    <a href="#products">商品比較</a>
+    <a href="#ranking">ランキング</a>
+    <a href="#point">選び方</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg-circle hbc1"></div>
+  <div class="hero-bg-circle hbc2"></div>
+  <div class="hero-grid">
+    <div class="hero-text">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-dot"></div>
+        専門家監修・2026年最新版
+      </div>
+      <h1>あなたの健康を、<br><em>科学的に</em>サポート。<br>本当に効くサプリを探す。</h1>
+      <p>
+        成分・価格・口コミを徹底分析。<br>
+        健康食品・サプリメント・ダイエット商品を<br>
+        正直に比較するメディアです。
+      </p>
+      <div class="hero-btns">
+        <a href="#ranking" class="btn-g">おすすめランキングへ</a>
+        <a href="#products" class="btn-o">カテゴリで探す</a>
+      </div>
+    </div>
+    <div class="hero-score-wrap">
+      <div class="score-card">
+        <div class="sc-rank g">1</div>
+        <div class="sc-info">
+          <div class="sc-name">メタバリアEX</div>
+          <div class="sc-cat">糖質・脂質ブロック</div>
+        </div>
+        <div class="sc-score">96<span>/100</span></div>
+      </div>
+      <div class="score-card">
+        <div class="sc-rank s">2</div>
+        <div class="sc-info">
+          <div class="sc-name">コラーゲンペプチド</div>
+          <div class="sc-cat">美容・エイジングケア</div>
+        </div>
+        <div class="sc-score">93<span>/100</span></div>
+      </div>
+      <div class="score-card">
+        <div class="sc-rank b">3</div>
+        <div class="sc-info">
+          <div class="sc-name">乳酸菌プロDX</div>
+          <div class="sc-cat">腸内環境・免疫サポート</div>
+        </div>
+        <div class="sc-score">91<span>/100</span></div>
+      </div>
+      <div class="hero-note">※ 独自スコア評価（成分・価格・口コミ）</div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust">
+  <div class="trust-inner">
+    <div class="trust-item"><strong>100+</strong>&nbsp;商品を比較分析</div>
+    <div class="trust-item"><strong>毎月</strong>&nbsp;情報を更新</div>
+    <div class="trust-item"><strong>成分</strong>&nbsp;を科学的に検証</div>
+    <div class="trust-item"><strong>A8.net</strong>&nbsp;提携広告掲載</div>
+    <div class="trust-item"><strong>景表法</strong>&nbsp;準拠・正直レビュー</div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section id="products" class="prod-bg">
+  <div class="si">
+    <div class="s-hdr c">
+      <span class="s-eye">Product Comparison</span>
+      <h2 class="s-ttl">カテゴリ別おすすめ商品</h2>
+      <p class="s-desc">成分・価格・継続しやすさを総合評価した厳選商品をご紹介します</p>
+    </div>
+    <div class="cats">
+      <button class="cat-pill on">すべて</button>
+      <button class="cat-pill">ダイエット</button>
+      <button class="cat-pill">腸活・乳酸菌</button>
+      <button class="cat-pill">美容・コラーゲン</button>
+      <button class="cat-pill">プロテイン</button>
+      <button class="cat-pill">マルチビタミン</button>
+    </div>
+    <div class="prod-grid">
+
+      <!-- 商品1 -->
+      <div class="prod-card featured">
+        <div class="featured-label">★ 編集部イチオシ</div>
+        <div class="prod-head" style="padding-top:2.5rem;">
+          <span class="prod-emoji">🔥</span>
+          <div class="prod-name">メタバリアEX</div>
+          <div class="prod-maker">大塚製薬 ／ ダイエットサプリ</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-tags">
+            <span class="prod-tag">糖質ブロック</span>
+            <span class="prod-tag">脂質カット</span>
+            <span class="prod-tag">食前服用</span>
+            <span class="prod-tag">定期便あり</span>
+          </div>
+          <p class="prod-desc">食事の糖質と脂質をWブロック。難消化性デキストリン配合で食後の血糖値上昇を抑制。食べながら続けやすい人気No.1ダイエットサプリ。</p>
+          <div class="prod-spec">
+            <div class="spec-row"><span class="spec-label">定期価格</span><span class="spec-val">初回¥1,480〜</span></div>
+            <div class="spec-row"><span class="spec-label">内容量</span><span class="spec-val">90粒（30日分）</span></div>
+            <div class="spec-row"><span class="spec-label">解約</span><span class="spec-val">いつでもOK</span></div>
+            <div class="spec-row">
+              <span class="spec-label">評価</span>
+              <span><span class="prod-stars">★★★★★</span><span class="prod-rating">4.8（2,340件）</span></span>
+            </div>
+          </div>
+        </div>
+        <div class="prod-foot">
+          <a href="#" class="btn-aff">
+            公式サイトで詳細を見る →
+            <small>※ A8.net経由 提携申請中・随時更新</small>
+          </a>
+        </div>
+      </div>
+
+      <!-- 商品2 -->
+      <div class="prod-card">
+        <div class="prod-head">
+          <span class="prod-emoji">🌸</span>
+          <div class="prod-name">コラーゲンペプチドEX</div>
+          <div class="prod-maker">DHC ／ 美容サプリ</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-tags">
+            <span class="prod-tag">低分子コラーゲン</span>
+            <span class="prod-tag">ビタミンC配合</span>
+            <span class="prod-tag">美肌・ハリ</span>
+          </div>
+          <p class="prod-desc">1日の摂取量に5,000mgの低分子コラーゲンペプチドを配合。ビタミンCとの相乗効果で肌のハリ・ツヤをサポート。飲みやすいパウダータイプ。</p>
+          <div class="prod-spec">
+            <div class="spec-row"><span class="spec-label">定期価格</span><span class="spec-val">月額¥2,160〜</span></div>
+            <div class="spec-row"><span class="spec-label">内容量</span><span class="spec-val">30袋（30日分）</span></div>
+            <div class="spec-row"><span class="spec-label">解約</span><span class="spec-val">2回目以降OK</span></div>
+            <div class="spec-row">
+              <span class="spec-label">評価</span>
+              <span><span class="prod-stars">★★★★★</span><span class="prod-rating">4.7（1,820件）</span></span>
+            </div>
+          </div>
+        </div>
+        <div class="prod-foot">
+          <a href="#" class="btn-aff">
+            公式サイトで詳細を見る →
+            <small>※ A8.net経由 提携申請中・随時更新</small>
+          </a>
+        </div>
+      </div>
+
+      <!-- 商品3 -->
+      <div class="prod-card">
+        <div class="prod-head">
+          <span class="prod-emoji">🦠</span>
+          <div class="prod-name">乳酸菌プロDX</div>
+          <div class="prod-maker">森下仁丹 ／ 腸活サプリ</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-tags">
+            <span class="prod-tag">1,000億個の乳酸菌</span>
+            <span class="prod-tag">ビフィズス菌</span>
+            <span class="prod-tag">腸内フローラ</span>
+          </div>
+          <p class="prod-desc">腸まで届く独自カプセルで1,000億個の乳酸菌を毎日補給。腸内環境を整えて免疫力・代謝アップをサポート。継続しやすい小粒タイプ。</p>
+          <div class="prod-spec">
+            <div class="spec-row"><span class="spec-label">定期価格</span><span class="spec-val">月額¥3,240〜</span></div>
+            <div class="spec-row"><span class="spec-label">内容量</span><span class="spec-val">60粒（30日分）</span></div>
+            <div class="spec-row"><span class="spec-label">解約</span><span class="spec-val">いつでもOK</span></div>
+            <div class="spec-row">
+              <span class="spec-label">評価</span>
+              <span><span class="prod-stars">★★★★☆</span><span class="prod-rating">4.5（980件）</span></span>
+            </div>
+          </div>
+        </div>
+        <div class="prod-foot">
+          <a href="#" class="btn-aff">
+            公式サイトで詳細を見る →
+            <small>※ A8.net経由 提携申請中・随時更新</small>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- RANKING -->
+<section id="ranking" class="rank-bg">
+  <div class="si">
+    <div class="s-hdr c">
+      <span class="s-eye">Ranking</span>
+      <h2 class="s-ttl">総合おすすめランキング</h2>
+      <p class="s-desc">2026年4月版 ／ 成分・価格・口コミを独自スコアで総合評価</p>
+    </div>
+    <div class="rank-list">
+      <div class="rank-row">
+        <div class="rank-no g">1</div>
+        <div class="rank-ico">🔥</div>
+        <div class="rank-info">
+          <div class="rank-nm">メタバリアEX</div>
+          <div class="rank-sub">糖質・脂質Wブロック ／ 飲みやすい錠剤 ／ 解約自由</div>
+        </div>
+        <div class="rank-rt">
+          <div class="rank-price">初回 <strong>¥1,480〜</strong></div>
+          <a href="#" class="btn-r">詳細を見る →</a>
+        </div>
+      </div>
+      <div class="rank-row">
+        <div class="rank-no s">2</div>
+        <div class="rank-ico">🌸</div>
+        <div class="rank-info">
+          <div class="rank-nm">コラーゲンペプチドEX</div>
+          <div class="rank-sub">低分子コラーゲン5,000mg ／ 美肌・ハリ ／ パウダー飲料</div>
+        </div>
+        <div class="rank-rt">
+          <div class="rank-price">月額 <strong>¥2,160〜</strong></div>
+          <a href="#" class="btn-r">詳細を見る →</a>
+        </div>
+      </div>
+      <div class="rank-row">
+        <div class="rank-no b">3</div>
+        <div class="rank-ico">🦠</div>
+        <div class="rank-info">
+          <div class="rank-nm">乳酸菌プロDX</div>
+          <div class="rank-sub">1,000億個の乳酸菌 ／ 腸内フローラ改善 ／ 免疫サポート</div>
+        </div>
+        <div class="rank-rt">
+          <div class="rank-price">月額 <strong>¥3,240〜</strong></div>
+          <a href="#" class="btn-r">詳細を見る →</a>
+        </div>
+      </div>
+      <div class="rank-row">
+        <div class="rank-no n">4</div>
+        <div class="rank-ico">💪</div>
+        <div class="rank-info">
+          <div class="rank-nm">ホエイプロテイン ゴールド</div>
+          <div class="rank-sub">タンパク質25g／回 ／ 筋肉維持・代謝アップ ／ 全5フレーバー</div>
+        </div>
+        <div class="rank-rt">
+          <div class="rank-price">月額 <strong>¥4,500〜</strong></div>
+          <a href="#" class="btn-r">詳細を見る →</a>
+        </div>
+      </div>
+      <div class="rank-row">
+        <div class="rank-no n">5</div>
+        <div class="rank-ico">🌿</div>
+        <div class="rank-info">
+          <div class="rank-nm">マルチビタミン&ミネラル</div>
+          <div class="rank-sub">23種の栄養素 ／ 1日1粒 ／ 忙しい方の栄養補給に</div>
+        </div>
+        <div class="rank-rt">
+          <div class="rank-price">月額 <strong>¥1,080〜</strong></div>
+          <a href="#" class="btn-r">詳細を見る →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POINT -->
+<section id="point" class="point-bg">
+  <div class="si">
+    <div class="s-hdr c">
+      <span class="s-eye" style="color:var(--teal2);">How to Choose</span>
+      <h2 class="s-ttl" style="color:var(--white);">失敗しない！サプリの選び方</h2>
+      <p class="s-desc" style="color:rgba(255,255,255,0.5);">購入前に必ずチェックしたい4つのポイント</p>
+    </div>
+    <div class="point-grid">
+      <div class="point-card">
+        <div class="point-num">01</div>
+        <h3>有効成分の含有量を確認</h3>
+        <p>「配合」とあっても含有量が少ないと効果が出にくいことも。有効成分が1日あたり何mg含まれているか必ずチェックしましょう。</p>
+      </div>
+      <div class="point-card">
+        <div class="point-num">02</div>
+        <h3>定期縛り・解約条件を確認</h3>
+        <p>「初回〇〇円」の定期便は、最低継続回数や解約方法を事前に確認することが大切。購入前に公式サイトの規約を必ず読みましょう。</p>
+      </div>
+      <div class="point-card">
+        <div class="point-num">03</div>
+        <h3>GMP認定工場での製造か</h3>
+        <p>品質・衛生管理の国際基準「GMP認定」を取得した工場で製造されているか確認。安全性の目安になります。</p>
+      </div>
+      <div class="point-card">
+        <div class="point-num">04</div>
+        <h3>口コミは「継続者」の声を重視</h3>
+        <p>1〜2週間の短期レビューより、3か月以上継続した方の声が参考になります。変化の実感には個人差があることも念頭に。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOICE -->
+<section class="voice-bg">
+  <div class="si">
+    <div class="s-hdr c">
+      <span class="s-eye">User Voice</span>
+      <h2 class="s-ttl">読者の声</h2>
+    </div>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="vc-q">"</div>
+        <p class="vc-txt">メタバリアを飲み始めてから食後の眠気がなくなりました。食事制限なしで続けられるのが嬉しいです。3か月で体重が少し落ちました。</p>
+        <div class="vc-meta">
+          <div class="vc-av">👩</div>
+          <div>
+            <div class="vc-name">30代・会社員 Kさん</div>
+            <div class="vc-tag">メタバリアEX ／ 継続4か月</div>
+            <div class="vc-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="vc-q">"</div>
+        <p class="vc-txt">コラーゲンサプリは色々試しましたが、こちらは粉末で飲みやすく続けやすい。肌のくすみが改善された気がします。</p>
+        <div class="vc-meta">
+          <div class="vc-av">🧑</div>
+          <div>
+            <div class="vc-name">40代・自営業 Mさん</div>
+            <div class="vc-tag">コラーゲンペプチドEX ／ 継続6か月</div>
+            <div class="vc-stars">★★★★☆</div>
+          </div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="vc-q">"</div>
+        <p class="vc-txt">腸の調子が悪く悩んでいましたが、乳酸菌プロを飲み始めて1か月でお通じが整いました。小粒で飲みやすいのも気に入っています。</p>
+        <div class="vc-meta">
+          <div class="vc-av">👴</div>
+          <div>
+            <div class="vc-name">50代・会社員 Tさん</div>
+            <div class="vc-tag">乳酸菌プロDX ／ 継続3か月</div>
+            <div class="vc-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="faq-bg">
+  <div class="si">
+    <div class="s-hdr c">
+      <span class="s-eye">FAQ</span>
+      <h2 class="s-ttl">よくある質問</h2>
+    </div>
+    <div class="faq-wrap">
+      <div class="faq-item">
+        <div class="faq-q">サプリメントは薬と一緒に飲んでも大丈夫ですか？<div class="faq-ic">+</div></div>
+        <div class="faq-a">薬との相互作用が起きる場合があります。特定の薬を服用中の方は、かかりつけ医や薬剤師にご相談のうえご使用ください。当サイトでは医療的なアドバイスは行っておりません。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">定期購入はいつでも解約できますか？<div class="faq-ic">+</div></div>
+        <div class="faq-a">商品によって解約条件が異なります。「初回〇〇円」の定期便は最低購入回数（例：3回）が設定されている場合があります。必ず購入前に公式サイトの定期購入規約をご確認ください。当サイトは解約に関する代行・サポートは行っておりません。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">効果が出るまでどのくらいかかりますか？<div class="faq-ic">+</div></div>
+        <div class="faq-a">個人差がありますが、一般的に腸活サプリは2〜4週間、ダイエット・美容系サプリは3か月程度の継続が目安とされています。短期間で劇的な効果を謳う商品には注意が必要です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">このサイトの情報は信頼できますか？<div class="faq-ic">+</div></div>
+        <div class="faq-a">当サイトはA8.netを通じたアフィリエイト広告を利用しています。掲載情報は公開データ・メーカー情報をもとに作成していますが、効果・価格は変更される場合があり、個人差もあります。最終的なご判断は必ず公式サイトをご確認のうえご自身でお願いします。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">健康食品に関する法律上の注意点は？<div class="faq-ic">+</div></div>
+        <div class="faq-a">健康食品・サプリメントは医薬品ではなく、「病気の治療・予防」を目的とした表現は景品表示法・薬機法により禁止されています。当サイトもこれらの法令に準拠した表現を心がけています。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-sec">
+  <div class="cta-in">
+    <div class="cta-eye">2026年 編集部厳選</div>
+    <h2>あなたに合った<br>一品を見つけよう</h2>
+    <p>ランキングページでは成分・価格・口コミを<br>総合スコアで比較しています。ぜひ参考にしてください。</p>
+    <a href="#ranking" class="btn-g">ランキングを見る →</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="ftr">
+  <div class="ftr-top">
+    <div class="ftr-brand">
+      <div class="ftr-brand-name">
+        <div class="hdr-logo-dot"></div>
+        HealthSelect
+      </div>
+      <p>健康食品・サプリメント・ダイエット商品を成分・価格・口コミから正直に比較するメディアです。A8.netを通じた提携広告を掲載しています。掲載情報は随時更新します。</p>
+    </div>
+    <div class="ftr-col">
+      <h4>カテゴリ</h4>
+      <ul>
+        <li><a href="#">ダイエットサプリ</a></li>
+        <li><a href="#">美容・コラーゲン</a></li>
+        <li><a href="#">腸活・乳酸菌</a></li>
+        <li><a href="#">プロテイン</a></li>
+        <li><a href="#">マルチビタミン</a></li>
+      </ul>
+    </div>
+    <div class="ftr-col">
+      <h4>サイト情報</h4>
+      <ul>
+        <li><a href="#">運営者情報</a></li>
+        <li><a href="#">プライバシーポリシー</a></li>
+        <li><a href="#">免責事項</a></li>
+        <li><a href="#">広告掲載について</a></li>
+        <li><a href="#">お問い合わせ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ftr-btm">
+    <div class="ftr-copy">© 2026 HealthSelect. All rights reserved.</div>
+    <div class="ftr-disc">
+      当サイトはアフィリエイト広告（A8.net）を利用しています。掲載商品の効果・効能には個人差があり、医薬品ではありません。価格・キャンペーン・解約条件は変更される場合がありますので、必ず公式サイトをご確認ください。定期購入は購入条件・解約方法を事前にご確認のうえお申し込みください。
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const item=q.parentElement;
+    const open=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!open)item.classList.add('open');
+  });
+});
+document.querySelectorAll('.cat-pill').forEach(p=>{
+  p.addEventListener('click',()=>{
+    document.querySelectorAll('.cat-pill').forEach(x=>x.classList.remove('on'));
+    p.classList.add('on');
+  });
+});
+</script>
+</body>
+</html>

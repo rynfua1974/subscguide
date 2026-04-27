@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>畑から食卓へ | 無農薬野菜おすすめ定期便ガイド</title>
+<meta name="description" content="農薬・化学肥料不使用の安全な野菜を自宅へ。信頼できる無農薬野菜の定期便サービスを徹底比較・紹介。子育て家族にも安心な旬の野菜をお届けします。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest:    #1e3a2f;
+  --moss:      #2d5a40;
+  --sage:      #5a8a6a;
+  --sage-lt:   #8ab89a;
+  --mint:      #c8e6d0;
+  --cream:     #f7f3eb;
+  --cream2:    #ede8db;
+  --terra:     #b5622a;
+  --terra-lt:  #f0d4be;
+  --soil:      #6b4226;
+  --linen:     #faf8f3;
+  --text:      #1c1c1c;
+  --text-mid:  #4a4a4a;
+  --text-soft: #7a7a6e;
+  --line:      #d8d4c8;
+  --r:         14px;
+  --r-sm:      7px;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  background: var(--linen);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* ─── HEADER ─── */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(30, 58, 47, 0.96);
+  backdrop-filter: blur(12px);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5vw; height: 62px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.site-logo {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.05rem; font-weight: 600;
+  color: var(--mint);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  display: flex; align-items: center; gap: 10px;
+}
+
+.logo-leaf {
+  width: 28px; height: 28px;
+  background: var(--sage);
+  border-radius: 50% 0 50% 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.site-logo sub {
+  font-size: 0.65rem; color: rgba(200,230,208,0.6);
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-weight: 300; letter-spacing: 0.12em;
+  display: block; line-height: 1;
+  margin-top: 2px;
+}
+
+nav { display: flex; gap: 1.8rem; }
+nav a {
+  color: rgba(200,230,208,0.7);
+  font-size: 0.82rem; text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+nav a:hover { color: var(--mint); }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  background: var(--forest);
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
+  padding: 100px 5vw 80px;
+}
+
+/* 背景の装飾的な円たち */
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.hero-orb-1 {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(90,138,106,0.25) 0%, transparent 70%);
+  top: -100px; right: -100px;
+  animation: float 12s ease-in-out infinite;
+}
+.hero-orb-2 {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(200,230,208,0.08) 0%, transparent 70%);
+  bottom: 10%; left: 30%;
+  animation: float 8s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-20px) scale(1.03); }
+}
+
+/* 畑のシルエット装飾（CSS） */
+.hero-field {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 180px;
+  background: linear-gradient(to top, rgba(45,90,64,0.6) 0%, transparent 100%);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5vw;
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: center;
+  position: relative; z-index: 1;
+}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(200,230,208,0.12);
+  border: 1px solid rgba(200,230,208,0.25);
+  color: var(--mint);
+  font-size: 0.72rem; letter-spacing: 0.18em;
+  padding: 6px 16px; border-radius: 20px;
+  margin-bottom: 1.75rem;
+}
+.hero-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--sage-lt);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100%{opacity:1;transform:scale(1);}
+  50%{opacity:0.5;transform:scale(1.4);}
+}
+
+.hero-text h1 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1.35;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.04em;
+}
+
+.hero-text h1 .accent {
+  color: var(--mint);
+  display: block;
+}
+
+.hero-text p {
+  color: rgba(247,243,235,0.72);
+  font-size: 0.95rem;
+  max-width: 440px;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+  line-height: 1.9;
+}
+
+.hero-cta-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+.btn-main {
+  display: inline-block;
+  background: var(--terra);
+  color: var(--cream);
+  font-weight: 500; font-size: 0.92rem;
+  padding: 14px 32px;
+  border-radius: var(--r);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  transition: all 0.25s;
+  border: none;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+}
+.btn-main:hover { background: #c96e35; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(181,98,42,0.35); }
+
+.btn-sub {
+  display: inline-block;
+  border: 1px solid rgba(200,230,208,0.35);
+  color: var(--mint);
+  font-size: 0.88rem;
+  padding: 13px 26px;
+  border-radius: var(--r);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.btn-sub:hover { background: rgba(200,230,208,0.08); border-color: var(--mint); }
+
+/* ヒーロー右側 ベジ カード */
+.hero-visual {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.veg-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(200,230,208,0.15);
+  border-radius: var(--r);
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  transition: all 0.3s;
+  animation: fadeUp 0.6s ease both;
+}
+.veg-card:hover {
+  background: rgba(200,230,208,0.08);
+  transform: translateY(-4px);
+  border-color: rgba(200,230,208,0.3);
+}
+.veg-card:nth-child(1){animation-delay:0.1s;}
+.veg-card:nth-child(2){animation-delay:0.2s;}
+.veg-card:nth-child(3){animation-delay:0.3s;}
+.veg-card:nth-child(4){animation-delay:0.4s;}
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(20px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.veg-emoji { font-size: 2.8rem; margin-bottom: 0.6rem; display: block; }
+.veg-name  { color: var(--mint); font-size: 0.78rem; letter-spacing: 0.08em; }
+.veg-tag   {
+  display: inline-block;
+  background: rgba(90,138,106,0.3);
+  color: var(--sage-lt);
+  font-size: 0.65rem;
+  padding: 2px 8px; border-radius: 10px;
+  margin-top: 5px; letter-spacing: 0.06em;
+}
+
+/* 大きいカードは2列跨ぎ */
+.veg-card.wide { grid-column: span 2; display: flex; align-items: center; gap: 1rem; text-align: left; padding: 1rem 1.5rem; }
+.veg-card.wide .veg-emoji { font-size: 2rem; margin-bottom: 0; }
+.veg-card.wide .veg-name { color: var(--cream); font-size: 0.8rem; }
+.veg-card.wide .wide-desc { font-size: 0.72rem; color: rgba(200,230,208,0.6); margin-top: 2px; }
+
+/* ─── TRUST BAR ─── */
+.trust-bar {
+  background: var(--cream2);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 1.5rem 5vw;
+}
+.trust-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; justify-content: center; gap: 4vw; flex-wrap: wrap; align-items: center;
+}
+.trust-item {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.82rem; color: var(--text-mid); letter-spacing: 0.04em;
+}
+.trust-icon {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--forest);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; flex-shrink: 0;
+}
+
+/* ─── SECTION BASE ─── */
+section { padding: 90px 5vw; }
+.sec-inner { max-width: 1100px; margin: 0 auto; }
+
+.sec-label {
+  font-size: 0.72rem; letter-spacing: 0.22em;
+  color: var(--sage); text-transform: uppercase;
+  display: block; margin-bottom: 0.6rem;
+}
+.sec-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-weight: 600; color: var(--forest);
+  line-height: 1.4; margin-bottom: 0.75rem;
+}
+.sec-desc { color: var(--text-soft); font-size: 0.9rem; max-width: 520px; }
+
+.sec-header { margin-bottom: 3.5rem; }
+.sec-header.center { text-align: center; }
+.sec-header.center .sec-desc { margin: 0 auto; }
+
+/* ─── WHY ORGANIC ─── */
+.why-bg { background: var(--linen); }
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.why-card {
+  background: var(--white, #fff);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 2rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s;
+}
+.why-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--moss), var(--sage-lt));
+}
+.why-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(30,58,47,0.1); }
+
+.why-icon {
+  font-size: 2.2rem; margin-bottom: 1rem; display: block;
+}
+.why-card h3 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 0.98rem; font-weight: 600;
+  color: var(--forest); margin-bottom: 0.6rem;
+}
+.why-card p { font-size: 0.82rem; color: var(--text-soft); line-height: 1.8; }
+
+/* ─── SERVICE CARDS ─── */
+.services-bg { background: var(--cream2); }
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 1.75rem;
+}
+
+.svc-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  overflow: hidden;
+  transition: all 0.28s;
+  display: flex; flex-direction: column;
+}
+.svc-card:hover { box-shadow: 0 16px 50px rgba(30,58,47,0.12); transform: translateY(-5px); }
+
+.svc-top {
+  background: var(--forest);
+  padding: 1.75rem 1.5rem 1.5rem;
+  position: relative; overflow: hidden;
+}
+.svc-top::after {
+  content: '';
+  position: absolute; bottom: -1px; left: 0; right: 0;
+  height: 40px;
+  background: #fff;
+  clip-path: ellipse(55% 100% at 50% 100%);
+}
+
+.svc-ribbon {
+  position: absolute; top: 14px; right: -28px;
+  background: var(--terra);
+  color: #fff;
+  font-size: 0.68rem; font-weight: 500;
+  padding: 4px 36px;
+  transform: rotate(35deg);
+  letter-spacing: 0.06em;
+}
+
+.svc-emoji { font-size: 3rem; display: block; margin-bottom: 0.5rem; }
+.svc-name {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.15rem; font-weight: 600;
+  color: var(--mint); letter-spacing: 0.04em;
+}
+.svc-sub { font-size: 0.75rem; color: rgba(200,230,208,0.6); margin-top: 2px; }
+
+.svc-body { padding: 1.5rem 1.5rem 1.25rem; flex: 1; }
+
+.svc-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+.svc-tag {
+  background: var(--mint);
+  color: var(--forest);
+  font-size: 0.68rem; font-weight: 500;
+  padding: 3px 10px; border-radius: 12px;
+  letter-spacing: 0.04em;
+}
+
+.svc-desc { font-size: 0.83rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 1.25rem; }
+
+.svc-detail {
+  display: flex; flex-direction: column; gap: 0.5rem;
+  background: var(--cream);
+  border-radius: var(--r-sm);
+  padding: 1rem; margin-bottom: 1.25rem;
+}
+.svc-row {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.8rem;
+}
+.svc-row-label { color: var(--text-soft); }
+.svc-row-val { font-weight: 500; color: var(--text); }
+
+.svc-stars { color: #d4a017; font-size: 0.9rem; }
+.svc-rating-txt { font-size: 0.75rem; color: var(--text-soft); margin-left: 4px; }
+
+.svc-footer { padding: 0 1.5rem 1.5rem; }
+.btn-affiliate {
+  display: block;
+  background: var(--forest);
+  color: var(--mint);
+  text-align: center;
+  padding: 13px;
+  border-radius: var(--r-sm);
+  font-size: 0.88rem; font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: all 0.2s;
+}
+.btn-affiliate:hover { background: var(--moss); }
+.btn-affiliate small {
+  display: block; font-size: 0.68rem;
+  color: rgba(200,230,208,0.5); margin-top: 2px; font-weight: 300;
+}
+
+/* ─── RANKING ─── */
+.ranking-bg { background: var(--linen); }
+
+.rank-list { display: flex; flex-direction: column; gap: 1.25rem; }
+
+.rank-item {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 1.25rem 1.5rem;
+  display: flex; align-items: center; gap: 1.25rem;
+  transition: all 0.22s;
+}
+.rank-item:hover { box-shadow: 0 8px 32px rgba(30,58,47,0.09); transform: translateX(4px); }
+
+.rank-medal {
+  min-width: 48px; height: 48px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.3rem; font-weight: 700;
+  flex-shrink: 0;
+}
+.rank-medal.g { background: #fef3d0; color: #c8960a; }
+.rank-medal.s { background: #f0f0f0; color: #7a7a7a; }
+.rank-medal.b { background: #f5ede7; color: #b87333; }
+.rank-medal.n { background: var(--cream2); color: var(--text-soft); font-size:1rem; }
+
+.rank-thumb { font-size: 2.2rem; flex-shrink: 0; }
+
+.rank-info { flex: 1; min-width: 0; }
+.rank-nm {
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 600; font-size: 0.95rem;
+  color: var(--forest); margin-bottom: 0.2rem;
+}
+.rank-pt { font-size: 0.78rem; color: var(--text-soft); }
+
+.rank-right { text-align: right; flex-shrink: 0; }
+.rank-price { font-size: 0.75rem; color: var(--text-soft); margin-bottom: 0.4rem; }
+.rank-price strong { font-size: 1rem; color: var(--forest); font-weight: 700; }
+.rank-cta {
+  display: inline-block;
+  background: var(--terra-lt);
+  color: var(--soil);
+  border: 1px solid var(--terra);
+  font-size: 0.75rem; font-weight: 500;
+  padding: 6px 14px; border-radius: var(--r-sm);
+  text-decoration: none;
+  transition: all 0.2s; white-space: nowrap;
+}
+.rank-cta:hover { background: var(--terra); color: #fff; }
+
+/* ─── VOICE ─── */
+.voice-bg { background: var(--cream2); }
+
+.voice-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.voice-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 1.75rem;
+  position: relative;
+}
+.voice-card::before {
+  content: '\201C';
+  font-family: 'Noto Serif JP', serif;
+  font-size: 5rem; font-weight: 700;
+  color: var(--mint);
+  position: absolute; top: -10px; left: 16px;
+  line-height: 1;
+}
+
+.voice-text { font-size: 0.85rem; color: var(--text-mid); line-height: 1.85; margin-bottom: 1.25rem; padding-top: 1rem; }
+.voice-meta { display: flex; align-items: center; gap: 10px; }
+.voice-avatar {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--sage);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; flex-shrink: 0;
+}
+.voice-name { font-size: 0.8rem; font-weight: 500; color: var(--forest); }
+.voice-tag  { font-size: 0.72rem; color: var(--text-soft); }
+.voice-stars { color: #d4a017; font-size: 0.8rem; margin-top: 2px; }
+
+/* ─── FAQ ─── */
+.faq-bg { background: var(--linen); }
+
+.faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.75rem; }
+
+.faq-item {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  overflow: hidden;
+}
+
+.faq-q {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.1rem 1.5rem;
+  cursor: pointer;
+  font-size: 0.88rem; font-weight: 500; color: var(--forest);
+  gap: 1rem;
+  user-select: none;
+}
+.faq-q:hover { background: var(--cream); }
+
+.faq-icon {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--cream2);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-size: 14px;
+  transition: transform 0.25s, background 0.2s;
+  color: var(--forest);
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); background: var(--forest); color: #fff; }
+
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.25s;
+  padding: 0 1.5rem;
+  font-size: 0.83rem; color: var(--text-mid); line-height: 1.85;
+}
+.faq-item.open .faq-a { max-height: 200px; padding: 0 1.5rem 1.25rem; }
+
+/* ─── CTA BANNER ─── */
+.cta-banner {
+  background: var(--forest);
+  padding: 90px 5vw;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-banner::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(90,138,106,0.3) 0%, transparent 65%);
+}
+.cta-banner-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+.cta-banner h2 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 600; color: var(--cream);
+  margin-bottom: 1rem; line-height: 1.4;
+}
+.cta-banner p { color: rgba(247,243,235,0.65); font-size: 0.9rem; margin-bottom: 2.5rem; font-weight: 300; }
+
+.cta-badge {
+  display: inline-block;
+  background: rgba(200,230,208,0.12);
+  border: 1px solid rgba(200,230,208,0.25);
+  color: var(--mint); font-size: 0.72rem;
+  letter-spacing: 0.14em; padding: 5px 14px; border-radius: 20px;
+  margin-bottom: 1.5rem;
+}
+
+/* ─── FOOTER ─── */
+.site-footer {
+  background: #111b16;
+  padding: 60px 5vw 40px;
+}
+.footer-top {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 3rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  margin-bottom: 2rem;
+}
+
+.footer-brand .logo { color: var(--mint); font-size: 1rem; display: inline-flex; align-items: center; gap: 8px; font-family: 'Noto Serif JP', serif; font-weight: 600; }
+.footer-brand p { font-size: 0.78rem; color: rgba(255,255,255,0.35); margin-top: 0.75rem; line-height: 1.8; }
+
+.footer-col h4 { font-size: 0.78rem; color: rgba(200,230,208,0.6); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 1rem; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-col a { font-size: 0.8rem; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+.footer-col a:hover { color: var(--mint); }
+
+.footer-bottom {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  gap: 1rem; flex-wrap: wrap;
+}
+.footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.25); }
+.footer-disclaimer { font-size: 0.7rem; color: rgba(255,255,255,0.2); max-width: 560px; line-height: 1.7; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  nav { display: none; }
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-visual { display: none; }
+  .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; }
+  .rank-item { flex-wrap: wrap; }
+  .rank-right { width: 100%; display: flex; gap: 1rem; align-items: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header class="site-header">
+  <a href="/" class="site-logo">
+    <div class="logo-leaf">🌿</div>
+    <div>
+      畑から食卓へ
+      <sub>ORGANIC VEGETABLE GUIDE</sub>
+    </div>
+  </a>
+  <nav>
+    <a href="#why">なぜ無農薬？</a>
+    <a href="#services">サービス比較</a>
+    <a href="#ranking">ランキング</a>
+    <a href="#faq">よくある質問</a>
+  </nav>
+</header>
+
+<!-- ─── HERO ─── -->
+<div class="hero">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-field"></div>
+
+  <div class="hero-grid">
+    <div class="hero-text">
+      <div class="hero-badge">農薬・化学肥料不使用</div>
+      <h1>
+        土が育てた、<br>
+        <span class="accent">本物の野菜</span>を<br>
+        あなたの食卓へ。
+      </h1>
+      <p>
+        子どもにも安心して食べさせたい。<br>
+        毎日の食事から健康を守りたい。<br>
+        そんな想いに応える、無農薬野菜の<br>
+        定期便サービスを徹底比較・ご紹介します。
+      </p>
+      <div class="hero-cta-group">
+        <a href="#ranking" class="btn-main">おすすめランキングを見る</a>
+        <a href="#services" class="btn-sub">サービスを比べる</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="veg-card">
+        <span class="veg-emoji">🥦</span>
+        <div class="veg-name">ブロッコリー</div>
+        <div class="veg-tag">旬 : 冬〜春</div>
+      </div>
+      <div class="veg-card">
+        <span class="veg-emoji">🍅</span>
+        <div class="veg-name">トマト</div>
+        <div class="veg-tag">旬 : 夏</div>
+      </div>
+      <div class="veg-card">
+        <span class="veg-emoji">🥕</span>
+        <div class="veg-name">にんじん</div>
+        <div class="veg-tag">旬 : 秋〜冬</div>
+      </div>
+      <div class="veg-card">
+        <span class="veg-emoji">🍃</span>
+        <div class="veg-name">ほうれん草</div>
+        <div class="veg-tag">旬 : 冬</div>
+      </div>
+      <div class="veg-card wide">
+        <span class="veg-emoji">📦</span>
+        <div>
+          <div class="veg-name">今週のおすすめセット</div>
+          <div class="wide-desc">旬の野菜 8種 / 無農薬・産地直送</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── TRUST BAR ─── -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <div class="trust-icon">🌱</div>
+      農薬・化学肥料不使用
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🚚</div>
+      産地直送・鮮度保証
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">👨‍👩‍👧</div>
+      子育て家族に人気
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">📝</div>
+      A8.net提携掲載
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🔄</div>
+      いつでも解約OK
+    </div>
+  </div>
+</div>
+
+<!-- ─── WHY ORGANIC ─── -->
+<section id="why" class="why-bg">
+  <div class="sec-inner">
+    <div class="sec-header">
+      <span class="sec-label">Why Organic</span>
+      <h2 class="sec-title">なぜ、無農薬野菜なのか</h2>
+      <p class="sec-desc">農薬や化学肥料を使わない野菜が選ばれる、4つの理由をご紹介します。</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="why-icon">🛡️</span>
+        <h3>家族の体に安心・安全</h3>
+        <p>農薬の残留リスクをゼロに近づけることで、小さなお子様や妊娠中の方も安心して食べられます。</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🌰</span>
+        <h3>栄養価が高くおいしい</h3>
+        <p>自然な土の力でゆっくり育った野菜は、ミネラルや食物繊維が豊富。味の濃さ・甘みが違います。</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🌍</span>
+        <h3>土壌・環境を守る</h3>
+        <p>化学農薬を使わないことで土の微生物が生き、自然生態系への負荷を最小限に抑えられます。</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">👨‍🌾</span>
+        <h3>農家を直接応援</h3>
+        <p>こだわりを持つ小規模農家を選ぶことで、持続可能な農業と地域経済を支えることができます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICES ─── -->
+<section id="services" class="services-bg">
+  <div class="sec-inner">
+    <div class="sec-header center">
+      <span class="sec-label">Service Comparison</span>
+      <h2 class="sec-title">無農薬野菜の定期便を比較</h2>
+      <p class="sec-desc">A8.netを通じて提携審査中のサービスを厳選紹介。順次リンクを更新します。</p>
+    </div>
+    <div class="service-grid">
+
+      <!-- Oisix -->
+      <div class="svc-card">
+        <div class="svc-top">
+          <div class="svc-ribbon">人気 No.1</div>
+          <span class="svc-emoji">🥗</span>
+          <div class="svc-name">Oisix（オイシックス）</div>
+          <div class="svc-sub">有機・特別栽培野菜の定期便</div>
+        </div>
+        <div class="svc-body">
+          <div class="svc-tags">
+            <span class="svc-tag">有機JAS認証</span>
+            <span class="svc-tag">ミールキットあり</span>
+            <span class="svc-tag">送料無料プラン</span>
+          </div>
+          <p class="svc-desc">農薬・化学肥料不使用にこだわった野菜をミールキットと一緒にお届け。全国の厳選農家と直接契約し、鮮度抜群の状態で届きます。</p>
+          <div class="svc-detail">
+            <div class="svc-row">
+              <span class="svc-row-label">月額料金</span>
+              <span class="svc-row-val">¥5,000〜</span>
+            </div>
+            <div class="svc-row">
+              <span class="svc-row-label">お届け頻度</span>
+              <span class="svc-row-val">週1〜自由設定</span>
+            </div>
+            <div class="svc-row">
+              <span class="svc-row-label">解約</span>
+              <span class="svc-row-val">いつでもOK</span>
+            </div>
+            <div class="svc-row">
+              <span class="svc-row-label">評価</span>
+              <span>
+                <span class="svc-stars">★★★★★</span>
+                <span class="svc-rating-txt">4.8（口コミ1,200件）</span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="svc-footer">
+          <a href="#" class="btn-affiliate">
+            公式サイトで詳細を見る →
+            <small>※ A8.net経由 提携審査中・随時更新</small>
+          </a>
+        </div>
+      </div>
+
+      <!-- 坂ノ途中 -->
+      <div class="svc-card">
+        <div class="svc-top">
+          <div class="svc-ribbon">環境に優しい</div>
+          <span class="svc-emoji">🌿</span>
+          <div class="svc-name">坂ノ途中</div>
+          <div class="svc-sub">新規就農者応援の有機野菜</div>
+        </div>
+        <div class="svc-body">
+          <div class="svc-tags">
+            <span class="svc-tag">化学農薬不使用</span>
+            <span class="svc-tag">サステナブル</span>
+            <span class="svc-tag">初回割引</span>
+          </div>
+          <p class="svc-desc">化学合成農薬・化学肥料を使わない農法にこだわる若手農家を支援。旬の野菜500種類以上から毎週セレクトして届けます。</p>
+          <div class="svc-detail">
+            <div class="svc-row">
+              <span class="svc-row-label">月額料金</span>
+              <span class="svc-row-val">¥2,480〜</span>
+            </div>
+            <div class="svc-row">
+              <span class="svc-row-label">お届け頻度</span>
+              <span class="svc-row-val">隔週・月1も可</span>
+            </div>
+            <div class="svc-row">
+              <span class="svc-row-label">解約</span>
+              <span class="svc-row-val">いつでもOK</span>
+            </div>
+            <div class="svc-row">
+              <span class="svc-row-label">評価</span>
+              <span>
+                <span class="svc-stars">★★★★★</span>
+                <span class="svc-rating-txt">4.6（口コミ840件）</span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="svc-footer">
+          <a href="#" class="btn-affiliate">
+            公式サイトで詳細を見る →
+            <small>※ A8.net経由 提携審査中・随時更新</small>
+          </a>
+        </div>
+      </div>
+
+      <!-- らでぃっしゅぼーや -->
+      <div class="svc-card">
+        <div class="svc-top">
+          <div class="svc-ribbon">老舗の信頼</div>
+          <span class="svc-emoji">🥕</span>
+          <div class="svc-name">らでぃっしゅぼーや</div>
+          <div class="svc-sub">30年の有機野菜宅配ブランド</div>
+        </div>
+        <div class="svc-body">
+          <div class="svc-tags">
+            <span class="svc-tag">独自基準・RADIX</span>
+            <span class="svc-tag">加工食品も充実</span>
+            <span class="svc-tag">30年の実績</span>
+          </div>
+          <p class="svc-desc">独自の農産物基準「RADIX」で徹底管理。有機野菜だけでなく、無添加の加工食品・乳製品なども取り揃え、食の安全を総合的にサポート。</p>
+          <div class="svc-detail">
+            <div class="svc-row">
+              <span class="svc-row-label">月額料金</span>
+              <span class="svc-row-val">¥3,500〜</span>
+            </div>
+            <div class="svc-row">
+              <span class="svc-row-label">お届け頻度</span>
+              <span class="svc-row-val">週1・隔週選択</span>
+            </div>
+            <div class="svc-row">
+              <span class="svc-row-label">解約</span>
+              <span class="svc-row-val">いつでもOK</span>
+            </div>
+            <div class="svc-row">
+              <span class="svc-row-label">評価</span>
+              <span>
+                <span class="svc-stars">★★★★☆</span>
+                <span class="svc-rating-txt">4.5（口コミ620件）</span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="svc-footer">
+          <a href="#" class="btn-affiliate">
+            公式サイトで詳細を見る →
+            <small>※ A8.net経由 提携審査中・随時更新</small>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── RANKING ─── -->
+<section id="ranking" class="ranking-bg">
+  <div class="sec-inner">
+    <div class="sec-header center">
+      <span class="sec-label">Ranking</span>
+      <h2 class="sec-title">無農薬野菜 おすすめランキング</h2>
+      <p class="sec-desc">2026年4月版 ／ 内容・価格・口コミを総合評価</p>
+    </div>
+    <div class="rank-list">
+      <div class="rank-item">
+        <div class="rank-medal g">1</div>
+        <div class="rank-thumb">🥗</div>
+        <div class="rank-info">
+          <div class="rank-nm">Oisix（オイシックス）</div>
+          <div class="rank-pt">有機JAS認証野菜 ／ ミールキット同梱 ／ 家族向け充実ラインナップ</div>
+        </div>
+        <div class="rank-right">
+          <div class="rank-price">月額 <strong>¥5,000〜</strong></div>
+          <a href="#" class="rank-cta">公式サイト →</a>
+        </div>
+      </div>
+      <div class="rank-item">
+        <div class="rank-medal s">2</div>
+        <div class="rank-thumb">🌿</div>
+        <div class="rank-info">
+          <div class="rank-nm">坂ノ途中</div>
+          <div class="rank-pt">化学農薬不使用 ／ 若手農家応援 ／ 環境配慮型サービス</div>
+        </div>
+        <div class="rank-right">
+          <div class="rank-price">月額 <strong>¥2,480〜</strong></div>
+          <a href="#" class="rank-cta">公式サイト →</a>
+        </div>
+      </div>
+      <div class="rank-item">
+        <div class="rank-medal b">3</div>
+        <div class="rank-thumb">🥕</div>
+        <div class="rank-info">
+          <div class="rank-nm">らでぃっしゅぼーや</div>
+          <div class="rank-pt">30年の老舗 ／ 独自RADIX基準 ／ 加工食品・乳製品も豊富</div>
+        </div>
+        <div class="rank-right">
+          <div class="rank-price">月額 <strong>¥3,500〜</strong></div>
+          <a href="#" class="rank-cta">公式サイト →</a>
+        </div>
+      </div>
+      <div class="rank-item">
+        <div class="rank-medal n">4</div>
+        <div class="rank-thumb">🌾</div>
+        <div class="rank-info">
+          <div class="rank-nm">大地を守る会</div>
+          <div class="rank-pt">産直野菜・完全有機 ／ 飼料・酪農にもこだわり ／ 安心の品質管理</div>
+        </div>
+        <div class="rank-right">
+          <div class="rank-price">月額 <strong>¥4,000〜</strong></div>
+          <a href="#" class="rank-cta">公式サイト →</a>
+        </div>
+      </div>
+      <div class="rank-item">
+        <div class="rank-medal n">5</div>
+        <div class="rank-thumb">🍃</div>
+        <div class="rank-info">
+          <div class="rank-nm">パルシステム</div>
+          <div class="rank-pt">生協系・信頼の国産野菜 ／ 低農薬基準 ／ 一人暮らしにも対応</div>
+        </div>
+        <div class="rank-right">
+          <div class="rank-price">月額 <strong>¥2,000〜</strong></div>
+          <a href="#" class="rank-cta">公式サイト →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── VOICE ─── -->
+<section class="voice-bg">
+  <div class="sec-inner">
+    <div class="sec-header center">
+      <span class="sec-label">User Voice</span>
+      <h2 class="sec-title">利用者の声</h2>
+    </div>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <p class="voice-text">子どもが野菜嫌いだったのに、Oisixの野菜を食べてから「これおいしい！」と言うようになりました。味の違いを実感しています。</p>
+        <div class="voice-meta">
+          <div class="voice-avatar">👩</div>
+          <div>
+            <div class="voice-name">30代・主婦 / Kさん</div>
+            <div class="voice-tag">Oisix利用歴2年</div>
+            <div class="voice-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <p class="voice-text">妊娠中に農薬が気になって坂ノ途中を始めました。農家さんの顔が見えるのが安心感につながります。お野菜のおいしさにびっくり。</p>
+        <div class="voice-meta">
+          <div class="voice-avatar">🤱</div>
+          <div>
+            <div class="voice-name">20代・会社員 / Mさん</div>
+            <div class="voice-tag">坂ノ途中利用歴1年</div>
+            <div class="voice-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <p class="voice-text">らでぃっしゅぼーやは野菜だけでなく、無添加の調味料も一緒に注文できるのが便利。食卓全体を安全にできた気がします。</p>
+        <div class="voice-meta">
+          <div class="voice-avatar">👨</div>
+          <div>
+            <div class="voice-name">40代・自営業 / Tさん</div>
+            <div class="voice-tag">らでぃっしゅ利用歴3年</div>
+            <div class="voice-stars">★★★★☆</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section id="faq" class="faq-bg">
+  <div class="sec-inner">
+    <div class="sec-header center">
+      <span class="sec-label">FAQ</span>
+      <h2 class="sec-title">よくある質問</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">
+          無農薬野菜と有機野菜はどう違うの？
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a">「有機野菜」は農林水産省が定めた有機JAS規格を満たし認証を受けたもの。「無農薬野菜」は農薬不使用の農家の自己申告ラベルで、認証は不要です。どちらも化学農薬を使わない点は共通ですが、有機JASは第三者機関の審査が入るため、より信頼性が高いとされています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          定期便はいつでも解約できますか？
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a">当サイトで紹介しているサービスはすべて「いつでも解約OK」のものを厳選しています。解約はwebサイトやLINEから手続き可能なものが多く、違約金もかかりません。初回お試し後に解約することも可能です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          一人暮らしでも利用できますか？
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a">はい。多くのサービスがSサイズ・少量プランを用意しており、1〜2人向けのセットもあります。また隔週・月1便など配送頻度を調整できるため、食べ切れる量だけ注文できます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          どのサービスが一番安いですか？
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a">月額コストで比較すると、パルシステム（¥2,000〜）や坂ノ途中（¥2,480〜）が入門しやすい価格帯です。ただし内容量・質・認証の有無も異なるため、価格だけでなくコスパで比較されることをおすすめします。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          このサイトはアフィリエイトサイトですか？
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a">はい、当サイトはA8.netを通じたアフィリエイト広告を利用しています。紹介リンクから申し込まれた場合、当サイトに成果報酬が発生します。掲載情報の正確性には努めていますが、料金・内容は変更される場合があるため、必ず公式サイトをご確認ください。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ─── -->
+<div class="cta-banner">
+  <div class="cta-banner-inner">
+    <div class="cta-badge">TODAY'S PICK</div>
+    <h2>今日から始める、<br>安心の食卓づくり</h2>
+    <p>初回限定のお得なキャンペーンを実施中のサービスも。<br>ぜひランキングページからお気に入りを見つけてください。</p>
+    <a href="#ranking" class="btn-main">ランキングを見る →</a>
+  </div>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="logo">🌿 畑から食卓へ</div>
+      <p>農薬・化学肥料不使用の安全な野菜を届けてくれるサービスを、独自の視点で比較・紹介するメディアです。A8.netを通じて提携審査中のサービスを随時追加します。</p>
+    </div>
+    <div class="footer-col">
+      <h4>カテゴリ</h4>
+      <ul>
+        <li><a href="#">野菜セット定期便</a></li>
+        <li><a href="#">ミールキット</a></li>
+        <li><a href="#">有機JAS認証</a></li>
+        <li><a href="#">産地直送</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>サイト情報</h4>
+      <ul>
+        <li><a href="#">運営者情報</a></li>
+        <li><a href="#">プライバシーポリシー</a></li>
+        <li><a href="#">免責事項</a></li>
+        <li><a href="#">広告掲載について</a></li>
+        <li><a href="#">お問い合わせ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 畑から食卓へ. All rights reserved.</div>
+    <div class="footer-disclaimer">
+      当サイトはアフィリエイト広告（A8.net）を利用しています。掲載情報は記事作成時点のものであり、サービス内容・価格・キャンペーンは予告なく変更される場合があります。お申し込み前に必ず公式サイトをご確認ください。定期購入は最低購入回数・解約条件を必ずご確認の上お申し込みください。
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
