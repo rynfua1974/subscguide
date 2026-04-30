@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ときめきお片付けプランナー ✨</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blush:   #f2d4d7;
+  --rose:    #d4788a;
+  --rose2:   #b85470;
+  --petal:   #fdf0f2;
+  --sage:    #8aad9a;
+  --sage-lt: #e8f3ec;
+  --cream:   #fdfaf6;
+  --warm:    #f7f0e8;
+  --caramel: #c8966c;
+  --ink:     #2c2018;
+  --ink2:    #5a4a3a;
+  --ink3:    #9a8a7a;
+  --line:    #ecddd5;
+  --white:   #ffffff;
+  --r:       16px;
+  --r-sm:    8px;
+  --shadow:  0 4px 24px rgba(44,32,24,0.08);
+  --shadow2: 0 12px 48px rgba(44,32,24,0.14);
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Zen Kaku Gothic New',sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  font-size:15px;
+  line-height:1.8;
+  min-height:100vh;
+}
+
+/* ── HEADER ── */
+.hdr{
+  background:var(--white);
+  border-bottom:1px solid var(--line);
+  padding:0 5vw;
+  height:58px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:200;
+}
+.hdr-logo{
+  font-family:'Shippori Mincho',serif;
+  font-size:1.1rem;color:var(--rose2);
+  display:flex;align-items:center;gap:8px;
+  font-weight:700;
+}
+.hdr-sub{font-size:0.72rem;color:var(--ink3);font-family:'Zen Kaku Gothic New',sans-serif;font-weight:300;}
+.hdr-right{display:flex;align-items:center;gap:1rem;}
+.progress-ring-wrap{display:flex;align-items:center;gap:8px;font-size:0.8rem;color:var(--ink3);}
+#global-progress{font-weight:700;color:var(--rose2);}
+
+/* ── HERO ── */
+.hero{
+  background:linear-gradient(135deg,var(--petal) 0%,var(--warm) 100%);
+  padding:60px 5vw 50px;
+  text-align:center;
+  position:relative;overflow:hidden;
+  border-bottom:1px solid var(--line);
+}
+.hero::before{
+  content:'🌸';
+  position:absolute;top:-20px;left:5%;
+  font-size:8rem;opacity:0.07;
+  animation:float 8s ease-in-out infinite;
+}
+.hero::after{
+  content:'✨';
+  position:absolute;bottom:-10px;right:8%;
+  font-size:6rem;opacity:0.08;
+  animation:float 6s ease-in-out infinite reverse;
+}
+@keyframes float{
+  0%,100%{transform:translateY(0) rotate(0deg);}
+  50%{transform:translateY(-15px) rotate(5deg);}
+}
+.hero-badge{
+  display:inline-block;
+  background:rgba(212,120,138,0.12);
+  border:1px solid rgba(212,120,138,0.3);
+  color:var(--rose2);
+  font-size:0.72rem;letter-spacing:0.15em;
+  padding:5px 16px;border-radius:20px;
+  margin-bottom:1.25rem;
+}
+.hero h1{
+  font-family:'Shippori Mincho',serif;
+  font-size:clamp(1.8rem,4vw,2.8rem);
+  font-weight:700;color:var(--ink);
+  line-height:1.35;margin-bottom:0.75rem;
+}
+.hero h1 em{color:var(--rose2);font-style:normal;}
+.hero p{color:var(--ink2);font-size:0.93rem;max-width:500px;margin:0 auto 2rem;font-weight:300;}
+
+/* ── STEPS ── */
+.steps-bar{
+  display:flex;justify-content:center;gap:0.5rem;
+  flex-wrap:wrap;margin-bottom:0;
+}
+.step-dot{
+  display:flex;align-items:center;gap:0.4rem;
+  font-size:0.78rem;color:var(--ink3);
+}
+.step-dot::before{
+  content:'';
+  width:8px;height:8px;border-radius:50%;
+  background:var(--blush);
+  flex-shrink:0;
+}
+.step-dot.done::before{background:var(--rose2);}
+
+/* ── MAIN LAYOUT ── */
+.main{
+  max-width:1200px;margin:0 auto;
+  padding:2.5rem 5vw;
+  display:grid;
+  grid-template-columns:1fr 340px;
+  gap:2rem;
+  align-items:start;
+}
+
+/* ── CATEGORY PROGRESS TABLE ── */
+.table-section{grid-column:1;}
+
+.sec-title{
+  font-family:'Shippori Mincho',serif;
+  font-size:1.2rem;font-weight:700;color:var(--ink);
+  margin-bottom:1.25rem;
+  display:flex;align-items:center;gap:10px;
+}
+.sec-title::before{
+  content:'';
+  width:4px;height:1.2em;
+  background:var(--rose2);
+  border-radius:2px;
+  display:inline-block;
+}
+
+.cat-table{
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:var(--r);
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+
+.cat-table table{
+  width:100%;border-collapse:collapse;
+}
+.cat-table th{
+  background:var(--petal);
+  font-size:0.78rem;letter-spacing:0.08em;
+  color:var(--ink2);font-weight:500;
+  padding:12px 16px;
+  text-align:left;
+  border-bottom:1px solid var(--line);
+}
+.cat-table th:nth-child(2),
+.cat-table th:nth-child(3),
+.cat-table th:nth-child(4){text-align:center;}
+
+.cat-row{transition:background 0.2s;}
+.cat-row:hover{background:var(--petal);}
+.cat-row td{
+  padding:12px 16px;
+  border-bottom:1px solid var(--line);
+  vertical-align:middle;
+}
+.cat-row:last-child td{border-bottom:none;}
+
+.cat-name{
+  display:flex;align-items:center;gap:10px;
+  font-weight:500;font-size:0.9rem;
+}
+.cat-emoji{font-size:1.4rem;}
+
+.progress-bar-wrap{
+  background:var(--line);
+  border-radius:10px;height:8px;
+  overflow:hidden;width:100px;
+  margin:0 auto;
+}
+.progress-bar-fill{
+  height:100%;border-radius:10px;
+  background:linear-gradient(90deg,var(--rose),var(--caramel));
+  transition:width 0.5s ease;
+}
+
+.count-cell{text-align:center;font-size:0.85rem;}
+.count-spark{color:var(--rose2);font-weight:700;}
+.count-total{color:var(--ink3);}
+
+.btn-start{
+  display:inline-block;
+  background:var(--rose2);color:var(--white);
+  font-size:0.78rem;font-weight:700;
+  padding:6px 14px;border-radius:20px;
+  border:none;cursor:pointer;
+  font-family:'Zen Kaku Gothic New',sans-serif;
+  transition:all 0.2s;white-space:nowrap;
+}
+.btn-start:hover{background:var(--rose);transform:translateY(-1px);}
+.btn-start.active{background:var(--sage);color:var(--white);}
+
+/* ── ITEM LIST PANEL ── */
+.item-panel{
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:var(--r);
+  margin-top:1.5rem;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  display:none;
+}
+.item-panel.show{display:block;}
+
+.panel-header{
+  background:var(--petal);
+  padding:1rem 1.25rem;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid var(--line);
+}
+.panel-title{
+  font-family:'Shippori Mincho',serif;
+  font-size:1rem;font-weight:700;color:var(--ink);
+  display:flex;align-items:center;gap:8px;
+}
+.btn-add-item{
+  background:var(--rose2);color:var(--white);
+  font-size:0.8rem;font-weight:700;
+  padding:7px 16px;border-radius:20px;
+  border:none;cursor:pointer;
+  font-family:'Zen Kaku Gothic New',sans-serif;
+  transition:all 0.2s;display:flex;align-items:center;gap:6px;
+}
+.btn-add-item:hover{background:var(--rose);}
+
+.item-input-row{
+  padding:1rem 1.25rem;
+  border-bottom:1px solid var(--line);
+  display:none;gap:0.5rem;align-items:center;
+  flex-wrap:wrap;
+}
+.item-input-row.show{display:flex;}
+.item-input{
+  flex:1;min-width:160px;
+  border:1px solid var(--line);border-radius:var(--r-sm);
+  padding:9px 12px;font-size:0.88rem;
+  font-family:'Zen Kaku Gothic New',sans-serif;
+  color:var(--ink);background:var(--cream);
+  outline:none;transition:border-color 0.2s;
+}
+.item-input:focus{border-color:var(--rose);}
+.btn-confirm{
+  background:var(--rose2);color:var(--white);
+  border:none;border-radius:var(--r-sm);
+  padding:9px 18px;font-size:0.85rem;font-weight:700;
+  cursor:pointer;font-family:'Zen Kaku Gothic New',sans-serif;
+  transition:all 0.2s;
+}
+.btn-confirm:hover{background:var(--rose);}
+.btn-cancel-input{
+  background:var(--line);color:var(--ink2);
+  border:none;border-radius:var(--r-sm);
+  padding:9px 14px;font-size:0.85rem;
+  cursor:pointer;font-family:'Zen Kaku Gothic New',sans-serif;
+}
+
+.items-list{padding:0.5rem 0;}
+.item-row{
+  display:flex;align-items:center;gap:0.75rem;
+  padding:10px 1.25rem;
+  border-bottom:1px solid var(--line);
+  transition:background 0.15s;
+}
+.item-row:last-child{border-bottom:none;}
+.item-row:hover{background:var(--petal);}
+
+.spark-btn{
+  width:36px;height:36px;border-radius:50%;
+  border:2px solid var(--line);
+  background:var(--cream);
+  font-size:1.2rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.2s;flex-shrink:0;
+}
+.spark-btn:hover{border-color:var(--rose);transform:scale(1.1);}
+.spark-btn.sparks{
+  background:var(--petal);border-color:var(--rose2);
+  animation:sparkle 0.4s ease;
+}
+.spark-btn.no-spark{
+  background:#f5f5f5;border-color:#ddd;
+  filter:grayscale(1);opacity:0.6;
+}
+@keyframes sparkle{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.3) rotate(15deg);}
+  100%{transform:scale(1);}
+}
+
+.item-name{
+  flex:1;font-size:0.88rem;color:var(--ink);
+}
+.item-name.done-out{
+  text-decoration:line-through;color:var(--ink3);
+}
+
+.spark-label{
+  font-size:0.72rem;padding:3px 10px;border-radius:12px;
+  white-space:nowrap;font-weight:500;
+}
+.spark-label.y{background:var(--petal);color:var(--rose2);}
+.spark-label.n{background:#f5f5f5;color:#999;}
+.spark-label.p{background:var(--warm);color:var(--caramel);}
+
+.btn-del-item{
+  background:none;border:none;color:var(--ink3);
+  font-size:1rem;cursor:pointer;padding:4px;
+  transition:color 0.2s;
+}
+.btn-del-item:hover{color:var(--rose2);}
+
+.panel-empty{
+  padding:2rem;text-align:center;
+  color:var(--ink3);font-size:0.85rem;
+}
+
+/* ── SIDEBAR ── */
+.sidebar{
+  display:flex;flex-direction:column;gap:1.25rem;
+  position:sticky;top:80px;
+}
+
+/* AIアドバイス */
+.ai-card{
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:var(--r);
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.ai-card-header{
+  background:linear-gradient(135deg,var(--rose2),var(--caramel));
+  padding:1rem 1.25rem;
+  display:flex;align-items:center;gap:10px;
+}
+.ai-card-header h3{
+  font-family:'Shippori Mincho',serif;
+  font-size:0.95rem;font-weight:700;color:var(--white);
+}
+.ai-card-header span{font-size:1.4rem;}
+.ai-body{padding:1.25rem;}
+.ai-desc{font-size:0.82rem;color:var(--ink2);margin-bottom:1rem;line-height:1.8;}
+.ai-select{
+  width:100%;border:1px solid var(--line);
+  border-radius:var(--r-sm);padding:9px 12px;
+  font-size:0.85rem;font-family:'Zen Kaku Gothic New',sans-serif;
+  color:var(--ink);background:var(--cream);
+  margin-bottom:0.75rem;outline:none;
+}
+.ai-select:focus{border-color:var(--rose);}
+.ai-textarea{
+  width:100%;border:1px solid var(--line);
+  border-radius:var(--r-sm);padding:9px 12px;
+  font-size:0.82rem;font-family:'Zen Kaku Gothic New',sans-serif;
+  color:var(--ink);background:var(--cream);
+  resize:vertical;min-height:70px;
+  margin-bottom:0.75rem;outline:none;
+  transition:border-color 0.2s;line-height:1.7;
+}
+.ai-textarea:focus{border-color:var(--rose);}
+.btn-ai{
+  width:100%;
+  background:linear-gradient(135deg,var(--rose2),var(--caramel));
+  color:var(--white);font-weight:700;
+  font-size:0.88rem;padding:12px;
+  border:none;border-radius:var(--r-sm);
+  cursor:pointer;font-family:'Zen Kaku Gothic New',sans-serif;
+  transition:all 0.25s;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.btn-ai:hover{opacity:0.9;transform:translateY(-1px);}
+.btn-ai:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
+
+.ai-result{
+  margin-top:1rem;
+  background:var(--petal);
+  border-radius:var(--r-sm);
+  padding:1rem;
+  font-size:0.82rem;color:var(--ink2);
+  line-height:1.85;
+  display:none;
+  border-left:3px solid var(--rose2);
+}
+.ai-result.show{display:block;}
+.ai-loading{
+  display:none;
+  text-align:center;padding:1rem;
+  color:var(--rose2);font-size:0.82rem;
+}
+.ai-loading.show{display:block;}
+.ai-loading::after{
+  content:'';
+  display:inline-block;
+  width:16px;height:16px;
+  border:2px solid var(--blush);
+  border-top-color:var(--rose2);
+  border-radius:50%;
+  animation:spin 0.8s linear infinite;
+  margin-left:8px;vertical-align:middle;
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* サマリーカード */
+.summary-card{
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:var(--r);
+  padding:1.25rem;
+  box-shadow:var(--shadow);
+}
+.summary-card h3{
+  font-family:'Shippori Mincho',serif;
+  font-size:0.95rem;font-weight:700;color:var(--ink);
+  margin-bottom:1rem;display:flex;align-items:center;gap:8px;
+}
+.summary-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;
+  margin-bottom:1rem;
+}
+.summary-item{
+  background:var(--petal);border-radius:var(--r-sm);
+  padding:0.75rem;text-align:center;
+}
+.summary-num{
+  font-family:'Shippori Mincho',serif;
+  font-size:1.6rem;font-weight:700;color:var(--rose2);
+  line-height:1;display:block;margin-bottom:2px;
+}
+.summary-num.sage{color:var(--sage);}
+.summary-label{font-size:0.7rem;color:var(--ink3);}
+
+.btn-reset{
+  width:100%;background:var(--warm);
+  color:var(--ink2);border:1px solid var(--line);
+  border-radius:var(--r-sm);padding:10px;
+  font-size:0.82rem;cursor:pointer;
+  font-family:'Zen Kaku Gothic New',sans-serif;
+  transition:all 0.2s;
+}
+.btn-reset:hover{background:var(--blush);color:var(--rose2);}
+
+/* ヒントカード */
+.hint-card{
+  background:var(--sage-lt);
+  border:1px solid rgba(138,173,154,0.3);
+  border-radius:var(--r);
+  padding:1.25rem;
+}
+.hint-card h3{
+  font-family:'Shippori Mincho',serif;
+  font-size:0.92rem;font-weight:700;
+  color:var(--sage);margin-bottom:0.75rem;
+  display:flex;align-items:center;gap:8px;
+}
+.hint-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.hint-list li{
+  font-size:0.8rem;color:var(--ink2);
+  padding-left:1rem;position:relative;line-height:1.7;
+}
+.hint-list li::before{
+  content:'✿';
+  position:absolute;left:0;color:var(--sage);font-size:0.7rem;
+}
+
+/* ── FOOTER ── */
+.ftr{
+  text-align:center;padding:2rem 5vw;
+  border-top:1px solid var(--line);
+  color:var(--ink3);font-size:0.75rem;margin-top:2rem;
+}
+
+/* ── CONFETTI ── */
+.confetti-piece{
+  position:fixed;
+  width:8px;height:8px;
+  border-radius:50%;
+  pointer-events:none;
+  animation:confetti-fall 1.5s ease-in forwards;
+  z-index:9999;
+}
+@keyframes confetti-fall{
+  0%{transform:translateY(-20px) rotate(0deg);opacity:1;}
+  100%{transform:translateY(100vh) rotate(720deg);opacity:0;}
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .main{grid-template-columns:1fr;}
+  .sidebar{position:static;}
+  .hdr-right{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hdr">
+  <div class="hdr-logo">
+    ✨ ときめきプランナー
+    <span class="hdr-sub">お片付けサポートツール</span>
+  </div>
+  <div class="hdr-right">
+    <div class="progress-ring-wrap">
+      完了率：<span id="global-progress">0</span>%
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">🌸 無料で使えるお片付けプランナー</div>
+  <h1>「<em>ときめく</em>か、ときめかないか」<br>で、部屋をすっきり整えよう</h1>
+  <p>カテゴリ別に持ち物を整理して、AIがあなたの断捨離をサポート。ブラウザだけで使えます。</p>
+  <div class="steps-bar">
+    <div class="step-dot">① カテゴリを選ぶ</div>
+    <div class="step-dot">② アイテムを追加</div>
+    <div class="step-dot">③ ときめきを判定</div>
+    <div class="step-dot">④ AIにアドバイスをもらう</div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- LEFT: TABLE + ITEM PANEL -->
+  <div class="table-section">
+    <div class="sec-title">カテゴリ別 進捗テーブル</div>
+    <div class="cat-table">
+      <table>
+        <thead>
+          <tr>
+            <th>カテゴリ</th>
+            <th>進捗</th>
+            <th>アイテム数</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody id="cat-tbody">
+          <!-- JS で生成 -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ITEM PANEL -->
+    <div class="item-panel" id="item-panel">
+      <div class="panel-header">
+        <div class="panel-title" id="panel-title">🗂️ アイテム一覧</div>
+        <button class="btn-add-item" onclick="showItemInput()">＋ アイテムを追加</button>
+      </div>
+      <div class="item-input-row" id="item-input-row">
+        <input class="item-input" id="item-input" type="text" placeholder="例：白いTシャツ、去年のコート…" maxlength="40">
+        <button class="btn-confirm" onclick="addItem()">追加</button>
+        <button class="btn-cancel-input" onclick="hideItemInput()">キャンセル</button>
+      </div>
+      <div class="items-list" id="items-list">
+        <div class="panel-empty">「＋ アイテムを追加」から整理したいものを登録しましょう ✨</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: SIDEBAR -->
+  <div class="sidebar">
+
+    <!-- AI アドバイス -->
+    <div class="ai-card">
+      <div class="ai-card-header">
+        <span>🤖</span>
+        <h3>AIお片付けアドバイザー</h3>
+      </div>
+      <div class="ai-body">
+        <p class="ai-desc">悩みを入力すると、AIが断捨離のアドバイスをしてくれます。</p>
+        <select class="ai-select" id="ai-topic">
+          <option value="">── 相談テーマを選ぶ ──</option>
+          <option value="clothes">👗 洋服・ファッション</option>
+          <option value="kitchen">🍳 キッチン用品</option>
+          <option value="books">📚 本・雑誌</option>
+          <option value="hobby">🎨 趣味・コレクション</option>
+          <option value="sentimental">💌 思い出の品</option>
+          <option value="digital">📱 デジタル・書類</option>
+          <option value="general">🏠 その他・全般</option>
+        </select>
+        <textarea class="ai-textarea" id="ai-question" placeholder="例：捨てられない洋服が多くて困っています。どうしたら気持ちよく手放せますか？"></textarea>
+        <button class="btn-ai" id="btn-ai" onclick="askAI()">
+          <span>✨</span> AIにアドバイスをもらう
+        </button>
+        <div class="ai-loading" id="ai-loading">AIが考えています</div>
+        <div class="ai-result" id="ai-result"></div>
+      </div>
+    </div>
+
+    <!-- サマリー -->
+    <div class="summary-card">
+      <h3>📊 整理の進捗サマリー</h3>
+      <div class="summary-grid">
+        <div class="summary-item">
+          <span class="summary-num" id="sum-total">0</span>
+          <div class="summary-label">総アイテム数</div>
+        </div>
+        <div class="summary-item">
+          <span class="summary-num" id="sum-done">0</span>
+          <div class="summary-label">判定済み</div>
+        </div>
+        <div class="summary-item">
+          <span class="summary-num" id="sum-spark">0</span>
+          <div class="summary-label">ときめく ✨</div>
+        </div>
+        <div class="summary-item">
+          <span class="summary-num sage" id="sum-bye">0</span>
+          <div class="summary-label">手放す 🌿</div>
+        </div>
+      </div>
+      <button class="btn-reset" onclick="resetAll()">🔄 最初からやり直す</button>
+    </div>
+
+    <!-- ヒント -->
+    <div class="hint-card">
+      <h3>🌸 ときめきチェックのコツ</h3>
+      <ul class="hint-list">
+        <li>手に取ったとき、胸がときめくかどうかで判断しましょう</li>
+        <li>「いつか使うかも」は手放すサイン</li>
+        <li>カテゴリ別に一度に全部出して比べると決めやすい</li>
+        <li>手放すものには「ありがとう」の気持ちを</li>
+        <li>迷ったらAIに相談してみましょう ✨</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<footer class="ftr">
+  © 2026 ときめきお片付けプランナー ✨ 無料でお使いいただけます ／ データはブラウザにのみ保存されます
+</footer>
+
+<script>
+// ─── データ ───
+const CATEGORIES = [
+  { id:'clothes', name:'洋服・ファッション', emoji:'👗' },
+  { id:'kitchen', name:'キッチン用品',       emoji:'🍳' },
+  { id:'books',   name:'本・雑誌',           emoji:'📚' },
+  { id:'hobby',   name:'趣味・コレクション', emoji:'🎨' },
+  { id:'senti',   name:'思い出の品',         emoji:'💌' },
+  { id:'digital', name:'書類・デジタル',     emoji:'📁' },
+  { id:'other',   name:'その他',             emoji:'🏠' },
+];
+
+// state: { [catId]: [ {id, name, spark: null|true|false} ] }
+let state = {};
+let activeCat = null;
+
+CATEGORIES.forEach(c => { state[c.id] = []; });
+
+// ─── RENDER TABLE ───
+function renderTable() {
+  const tbody = document.getElementById('cat-tbody');
+  tbody.innerHTML = '';
+  CATEGORIES.forEach(cat => {
+    const items = state[cat.id];
+    const total = items.length;
+    const judged = items.filter(i => i.spark !== null).length;
+    const pct = total === 0 ? 0 : Math.round(judged / total * 100);
+    const isActive = activeCat === cat.id;
+
+    const tr = document.createElement('tr');
+    tr.className = 'cat-row';
+    tr.innerHTML = `
+      <td>
+        <div class="cat-name">
+          <span class="cat-emoji">${cat.emoji}</span>
+          ${cat.name}
+        </div>
+      </td>
+      <td>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" style="width:${pct}%"></div>
+        </div>
+      </td>
+      <td class="count-cell">
+        <span class="count-spark">${judged}</span>
+        <span class="count-total"> / ${total}</span>
+      </td>
+      <td style="text-align:center;">
+        <button class="btn-start ${isActive?'active':''}"
+          onclick="openCat('${cat.id}')">
+          ${isActive ? '✓ 編集中' : '整理する'}
+        </button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+  updateSummary();
+  updateGlobalProgress();
+}
+
+// ─── OPEN CATEGORY ───
+function openCat(catId) {
+  activeCat = catId;
+  const cat = CATEGORIES.find(c => c.id === catId);
+  document.getElementById('panel-title').textContent = `${cat.emoji} ${cat.name}`;
+  document.getElementById('item-panel').classList.add('show');
+  hideItemInput();
+  renderItems();
+  renderTable();
+  document.getElementById('item-panel').scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+// ─── RENDER ITEMS ───
+function renderItems() {
+  const list = document.getElementById('items-list');
+  const items = state[activeCat];
+  if (items.length === 0) {
+    list.innerHTML = '<div class="panel-empty">「＋ アイテムを追加」から整理したいものを登録しましょう ✨</div>';
+    return;
+  }
+  list.innerHTML = '';
+  items.forEach((item, idx) => {
+    const div = document.createElement('div');
+    div.className = 'item-row';
+
+    let sparkIcon = '？';
+    let labelHtml = '<span class="spark-label p">未判定</span>';
+    let btnClass = '';
+    let nameClass = '';
+
+    if (item.spark === true) {
+      sparkIcon = '✨';
+      labelHtml = '<span class="spark-label y">ときめく ✨</span>';
+      btnClass = 'sparks';
+    } else if (item.spark === false) {
+      sparkIcon = '👋';
+      labelHtml = '<span class="spark-label n">手放す</span>';
+      btnClass = 'no-spark';
+      nameClass = 'done-out';
+    }
+
+    div.innerHTML = `
+      <button class="spark-btn ${btnClass}" onclick="cycleSpark(${idx})" title="クリックで判定">
+        ${sparkIcon}
+      </button>
+      <span class="item-name ${nameClass}">${escHtml(item.name)}</span>
+      ${labelHtml}
+      <button class="btn-del-item" onclick="delItem(${idx})" title="削除">✕</button>
+    `;
+    list.appendChild(div);
+  });
+}
+
+function cycleSpark(idx) {
+  const item = state[activeCat][idx];
+  if (item.spark === null) {
+    item.spark = true;
+    launchConfetti();
+  } else if (item.spark === true) {
+    item.spark = false;
+  } else {
+    item.spark = null;
+  }
+  renderItems();
+  renderTable();
+}
+
+function delItem(idx) {
+  state[activeCat].splice(idx, 1);
+  renderItems();
+  renderTable();
+}
+
+// ─── ADD ITEM ───
+function showItemInput() {
+  document.getElementById('item-input-row').classList.add('show');
+  document.getElementById('item-input').focus();
+}
+function hideItemInput() {
+  document.getElementById('item-input-row').classList.remove('show');
+  document.getElementById('item-input').value = '';
+}
+function addItem() {
+  const input = document.getElementById('item-input');
+  const name = input.value.trim();
+  if (!name) return;
+  state[activeCat].push({ id: Date.now(), name, spark: null });
+  input.value = '';
+  input.focus();
+  renderItems();
+  renderTable();
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && document.getElementById('item-input') === document.activeElement) {
+    addItem();
+  }
+});
+
+// ─── SUMMARY ───
+function updateSummary() {
+  let total=0, done=0, spark=0, bye=0;
+  CATEGORIES.forEach(c => {
+    state[c.id].forEach(item => {
+      total++;
+      if (item.spark !== null) done++;
+      if (item.spark === true) spark++;
+      if (item.spark === false) bye++;
+    });
+  });
+  document.getElementById('sum-total').textContent = total;
+  document.getElementById('sum-done').textContent  = done;
+  document.getElementById('sum-spark').textContent = spark;
+  document.getElementById('sum-bye').textContent   = bye;
+}
+
+function updateGlobalProgress() {
+  let total=0, done=0;
+  CATEGORIES.forEach(c => {
+    state[c.id].forEach(item => {
+      total++;
+      if (item.spark !== null) done++;
+    });
+  });
+  const pct = total === 0 ? 0 : Math.round(done / total * 100);
+  document.getElementById('global-progress').textContent = pct;
+}
+
+// ─── RESET ───
+function resetAll() {
+  if (!confirm('すべてのデータをリセットしますか？')) return;
+  CATEGORIES.forEach(c => { state[c.id] = []; });
+  activeCat = null;
+  document.getElementById('item-panel').classList.remove('show');
+  renderTable();
+}
+
+// ─── CONFETTI ───
+function launchConfetti() {
+  const colors = ['#f2d4d7','#d4788a','#c8966c','#8aad9a','#fdf0f2'];
+  for (let i = 0; i < 12; i++) {
+    const el = document.createElement('div');
+    el.className = 'confetti-piece';
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.top  = '0';
+    el.style.background = colors[Math.floor(Math.random() * colors.length)];
+    el.style.animationDelay = Math.random() * 0.5 + 's';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 2000);
+  }
+}
+
+// ─── AI ADVICE ───
+async function askAI() {
+  const topic    = document.getElementById('ai-topic').value;
+  const question = document.getElementById('ai-question').value.trim();
+  if (!question) {
+    alert('相談内容を入力してください 🌸');
+    return;
+  }
+
+  const btn     = document.getElementById('btn-ai');
+  const loading = document.getElementById('ai-loading');
+  const result  = document.getElementById('ai-result');
+
+  btn.disabled = true;
+  loading.classList.add('show');
+  result.classList.remove('show');
+
+  // 現在の進捗をサマリーに
+  let total=0, spark=0, bye=0;
+  CATEGORIES.forEach(c => {
+    state[c.id].forEach(i => {
+      total++;
+      if (i.spark === true) spark++;
+      if (i.spark === false) bye++;
+    });
+  });
+
+  const topicLabel = document.getElementById('ai-topic').selectedOptions[0]?.text || '';
+  const systemPrompt = `あなたは優しく寄り添う日本人のお片付けアドバイザーです。
+「ときめくか、ときめかないか」を判断基準にしたお片付けメソッドを専門としています。
+ユーザーの悩みに対して、温かく、具体的で、実践的なアドバイスを200〜280字程度で返してください。
+語尾は「〜ですね」「〜しましょう」「〜ですよ」のような優しいトーンで。
+絵文字を2〜3個さりげなく使って、読みやすくしてください。`;
+
+  const userMsg = `相談テーマ：${topicLabel}
+現在の進捗：全${total}アイテム中、ときめく${spark}個、手放す${bye}個
+
+相談内容：${question}`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST',
+      headers:{ 'Content-Type':'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: systemPrompt,
+        messages:[{ role:'user', content: userMsg }]
+      })
+    });
+    const data = await res.json();
+    const text = data.content?.[0]?.text || 'アドバイスを取得できませんでした。';
+    result.textContent = text;
+    result.classList.add('show');
+  } catch(e) {
+    result.textContent = 'AIとの通信でエラーが発生しました。しばらくしてからお試しください。';
+    result.classList.add('show');
+  } finally {
+    btn.disabled = false;
+    loading.classList.remove('show');
+  }
+}
+
+// ─── UTILS ───
+function escHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ─── INIT ───
+renderTable();
+</script>
+</body>
+</html>
