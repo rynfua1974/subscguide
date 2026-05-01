@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>健康食材ベスト10 | 栄養成分・効能・おすすめ調理法ガイド</title>
+<meta name="description" content="管理栄養士が選ぶ健康食材ベスト10。栄養成分・効能・選び方・おすすめ調理法を徹底解説。毎日の食事に取り入れるだけで体が変わる。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:    #0f2340;
+  --navy2:   #1a3a5c;
+  --teal:    #1a6b72;
+  --teal2:   #22909a;
+  --teal-lt: #e0f4f6;
+  --gold:    #b8952a;
+  --gold-lt: #fdf6e3;
+  --cream:   #faf9f5;
+  --warm:    #f3ede0;
+  --rose:    #c94b4b;
+  --rose-lt: #fdf0f0;
+  --text:    #1a1a2e;
+  --text2:   #3d4a5c;
+  --text3:   #7a8899;
+  --line:    #dde5ed;
+  --white:   #ffffff;
+  --r:       6px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Noto Sans JP',sans-serif;
+  background:var(--cream);color:var(--text);
+  font-size:15px;line-height:1.8;
+}
+
+/* ── HEADER ── */
+.hdr{
+  background:var(--navy);
+  padding:0 6vw;
+  display:flex;align-items:center;justify-content:space-between;
+  height:58px;
+}
+.hdr-logo{
+  font-family:'Libre Baskerville',serif;
+  font-size:1.15rem;color:var(--white);
+  letter-spacing:0.08em;text-decoration:none;
+  display:flex;align-items:center;gap:12px;
+}
+.hdr-logo-mark{
+  width:28px;height:28px;
+  background:var(--teal2);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;flex-shrink:0;
+}
+.hdr-nav{display:flex;gap:2rem;}
+.hdr-nav a{
+  font-size:0.75rem;color:rgba(255,255,255,0.5);
+  text-decoration:none;letter-spacing:0.1em;
+  transition:color 0.2s;font-family:'Lato',sans-serif;
+  text-transform:uppercase;
+}
+.hdr-nav a:hover{color:var(--teal2);}
+
+/* ── HERO ── */
+.hero{
+  background:linear-gradient(150deg, var(--navy) 0%, var(--navy2) 50%, var(--teal) 100%);
+  padding:80px 6vw 64px;
+  position:relative;overflow:hidden;
+}
+.hero::after{
+  content:'';
+  position:absolute;bottom:0;left:0;right:0;
+  height:60px;
+  background:var(--cream);
+  clip-path:ellipse(55% 100% at 50% 100%);
+}
+.hero-inner{
+  max-width:1080px;margin:0 auto;
+  display:grid;grid-template-columns:1fr auto;
+  gap:4rem;align-items:center;
+  position:relative;z-index:1;
+}
+.hero-label{
+  font-family:'Lato',sans-serif;
+  font-size:0.68rem;letter-spacing:0.25em;
+  color:var(--teal2);text-transform:uppercase;
+  margin-bottom:1rem;display:block;
+}
+.hero h1{
+  font-family:'Libre Baskerville',serif;
+  font-size:clamp(2rem,4.5vw,3.2rem);
+  color:var(--white);line-height:1.25;
+  margin-bottom:1.25rem;
+  font-weight:700;
+}
+.hero h1 em{color:var(--teal2);font-style:italic;}
+.hero-desc{
+  color:rgba(255,255,255,0.6);
+  font-size:0.9rem;max-width:460px;
+  font-weight:300;line-height:2;margin-bottom:2rem;
+}
+.hero-badges{display:flex;gap:0.75rem;flex-wrap:wrap;}
+.h-badge{
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.15);
+  color:rgba(255,255,255,0.75);
+  font-size:0.72rem;padding:6px 14px;
+  border-radius:20px;letter-spacing:0.06em;
+}
+
+/* ランキングプレビュー */
+.hero-preview{
+  display:flex;flex-direction:column;gap:0.5rem;
+  min-width:200px;
+}
+.prev-item{
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:var(--r);
+  padding:0.6rem 1rem;
+  display:flex;align-items:center;gap:10px;
+  transition:background 0.2s;
+}
+.prev-item:hover{background:rgba(255,255,255,0.12);}
+.prev-rank{
+  font-family:'Libre Baskerville',serif;
+  font-size:0.9rem;font-weight:700;
+  color:rgba(255,255,255,0.3);
+  min-width:20px;
+}
+.prev-rank.g{color:var(--gold);}
+.prev-rank.s{color:#b0b8c8;}
+.prev-rank.b{color:#c07844;}
+.prev-emoji{font-size:1.2rem;}
+.prev-name{color:rgba(255,255,255,0.8);font-size:0.82rem;}
+
+/* ── MAIN ── */
+.main{
+  max-width:1080px;margin:0 auto;
+  padding:3rem 6vw;
+  display:grid;grid-template-columns:1fr 280px;
+  gap:3rem;align-items:start;
+}
+
+/* ── RANKING ── */
+.rank-wrap{}
+.rank-header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:2rem;
+  padding-bottom:1rem;
+  border-bottom:1px solid var(--line);
+}
+.rank-title{
+  font-family:'Libre Baskerville',serif;
+  font-size:1.3rem;color:var(--navy);
+}
+.rank-updated{font-size:0.72rem;color:var(--text3);}
+
+/* TOP3 特別スタイル */
+.top3-grid{
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  gap:1px;background:var(--line);
+  margin-bottom:1.5rem;
+  border:1px solid var(--line);
+  border-radius:var(--r);overflow:hidden;
+}
+.tc{
+  background:var(--white);
+  padding:1.5rem 1.25rem;
+  display:flex;flex-direction:column;gap:0.75rem;
+  transition:background 0.2s;
+  cursor:pointer;
+}
+.tc:hover{background:var(--cream);}
+.tc.rank1{border-top:3px solid var(--gold);}
+.tc.rank2{border-top:3px solid #9aa0aa;}
+.tc.rank3{border-top:3px solid #c07844;}
+
+.tc-header{display:flex;align-items:center;justify-content:space-between;}
+.tc-num{
+  font-family:'Libre Baskerville',serif;
+  font-size:0.8rem;font-weight:700;
+}
+.tc-num.g{color:var(--gold);}
+.tc-num.s{color:#9aa0aa;}
+.tc-num.b{color:#c07844;}
+.tc-score{
+  font-family:'Lato',sans-serif;
+  font-size:0.72rem;font-weight:700;
+  background:var(--teal-lt);color:var(--teal);
+  padding:2px 8px;border-radius:10px;
+}
+.tc-emoji{font-size:2.5rem;text-align:center;margin:0.25rem 0;}
+.tc-name{
+  font-family:'Libre Baskerville',serif;
+  font-size:1rem;font-weight:700;color:var(--navy);
+  text-align:center;
+}
+.tc-effect{font-size:0.75rem;color:var(--text3);text-align:center;line-height:1.6;}
+.tc-nutri{
+  display:flex;flex-wrap:wrap;gap:0.3rem;justify-content:center;
+}
+.tc-n{
+  font-size:0.62rem;padding:2px 7px;border-radius:2px;
+  background:var(--warm);color:var(--text2);
+}
+
+/* 4〜10位 リスト */
+.rank-rows{display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;}
+.rr{
+  background:var(--white);
+  display:grid;grid-template-columns:52px 48px 1fr auto;
+  align-items:center;gap:0;
+  transition:all 0.2s;
+}
+.rr:hover{background:var(--cream);}
+.rr-num{
+  font-family:'Libre Baskerville',serif;
+  font-size:1.2rem;font-weight:700;color:var(--line);
+  text-align:center;padding:1rem 0;
+}
+.rr-emoji{font-size:1.6rem;padding:0.75rem 0.5rem;}
+.rr-info{padding:0.75rem 0.5rem;}
+.rr-name{
+  font-family:'Libre Baskerville',serif;
+  font-size:0.92rem;font-weight:700;color:var(--navy);
+}
+.rr-sub{font-size:0.75rem;color:var(--text3);margin-top:2px;}
+.rr-right{
+  padding:0.75rem 1.25rem;text-align:right;
+}
+.rr-score{
+  font-family:'Lato',sans-serif;
+  font-size:1.2rem;font-weight:700;color:var(--teal2);
+}
+.rr-slabel{font-size:0.62rem;color:var(--text3);}
+
+/* ── 栄養成分比較テーブル ── */
+.nutri-section{margin-top:2.5rem;}
+.ns-title{
+  font-family:'Libre Baskerville',serif;
+  font-size:1rem;color:var(--navy);
+  margin-bottom:1rem;padding-bottom:0.5rem;
+  border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:10px;
+}
+.nutri-table{
+  width:100%;border-collapse:collapse;
+  background:var(--white);border:1px solid var(--line);
+  border-radius:var(--r);overflow:hidden;
+}
+.nutri-table th{
+  background:var(--navy);color:rgba(255,255,255,0.7);
+  font-size:0.7rem;letter-spacing:0.1em;
+  padding:10px 12px;text-align:left;font-weight:400;
+  font-family:'Lato',sans-serif;text-transform:uppercase;
+}
+.nutri-table th:nth-child(n+2){text-align:center;}
+.nutri-table td{
+  padding:9px 12px;font-size:0.8rem;
+  border-bottom:1px solid var(--line);
+}
+.nutri-table tr:last-child td{border-bottom:none;}
+.nutri-table tr:hover td{background:var(--cream);}
+.nutri-table td:nth-child(n+2){text-align:center;}
+.nt-name{font-weight:500;color:var(--navy);}
+.nt-star{color:#f59e0b;}
+.nt-score{
+  font-family:'Lato',sans-serif;font-weight:700;
+  font-size:0.85rem;color:var(--teal);
+}
+
+/* ── SIDEBAR ── */
+.sidebar{display:flex;flex-direction:column;gap:1.25rem;position:sticky;top:70px;}
+.s-card{
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:var(--r);overflow:hidden;
+}
+.s-head{
+  background:var(--navy);
+  padding:0.75rem 1.25rem;
+  font-family:'Libre Baskerville',serif;
+  font-size:0.92rem;color:var(--white);
+  letter-spacing:0.04em;
+}
+.s-body{padding:1.25rem;}
+
+.effect-list{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+.ef-item{
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:0.82rem;color:var(--text2);line-height:1.65;
+}
+.ef-icon{
+  width:26px;height:26px;border-radius:50%;
+  background:var(--teal-lt);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;flex-shrink:0;margin-top:2px;
+}
+
+.cook-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.cook-item{
+  background:var(--warm);border-radius:var(--r);
+  padding:0.6rem 0.9rem;
+  font-size:0.8rem;color:var(--text2);
+  display:flex;align-items:center;gap:8px;
+}
+.cook-item::before{content:'🔪';font-size:0.9rem;}
+
+/* ── FOOTER ── */
+.ftr{
+  background:var(--navy);padding:3rem 6vw;text-align:center;
+  margin-top:4rem;
+}
+.ftr-logo{
+  font-family:'Libre Baskerville',serif;
+  font-size:1.1rem;color:rgba(255,255,255,0.7);
+  margin-bottom:0.5rem;display:block;
+}
+.ftr p{font-size:0.75rem;color:rgba(255,255,255,0.3);}
+.ftr-disc{font-size:0.7rem;color:rgba(255,255,255,0.2);margin-top:0.75rem;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.7;}
+
+@media(max-width:768px){
+  .main{grid-template-columns:1fr;}
+  .sidebar{position:static;}
+  .top3-grid{grid-template-columns:1fr;}
+  .hero-inner{grid-template-columns:1fr;}
+  .hero-preview{display:none;}
+  .hdr-nav{display:none;}
+  .rr{grid-template-columns:44px 40px 1fr;}
+  .rr-right{display:none;}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <a href="/" class="hdr-logo">
+    <div class="hdr-logo-mark">🌿</div>
+    健康食材ガイド
+  </a>
+  <nav class="hdr-nav">
+    <a href="#ranking">ランキング</a>
+    <a href="#nutri">栄養比較</a>
+    <a href="#tips">調理法</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="hero-label">管理栄養士監修 ／ 2026年版</span>
+      <h1>毎日食べたい<br><em>健康食材</em><br>ベスト10</h1>
+      <p class="hero-desc">栄養成分・健康効能・コスパを徹底分析。この10食材を食卓に取り入れるだけで、体の内側から変わり始めます。</p>
+      <div class="hero-badges">
+        <div class="h-badge">🔬 科学的根拠あり</div>
+        <div class="h-badge">💰 コスパ評価付き</div>
+        <div class="h-badge">👨‍🍳 調理法も紹介</div>
+      </div>
+    </div>
+    <div class="hero-preview">
+      <div class="prev-item"><span class="prev-rank g">1</span><span class="prev-emoji">🥦</span><span class="prev-name">ブロッコリー</span></div>
+      <div class="prev-item"><span class="prev-rank s">2</span><span class="prev-emoji">🐟</span><span class="prev-name">鮭</span></div>
+      <div class="prev-item"><span class="prev-rank b">3</span><span class="prev-emoji">🥬</span><span class="prev-name">ほうれん草</span></div>
+      <div class="prev-item"><span class="prev-rank">4</span><span class="prev-emoji">🧄</span><span class="prev-name">にんにく</span></div>
+      <div class="prev-item"><span class="prev-rank">5</span><span class="prev-emoji">🫐</span><span class="prev-name">ブルーベリー</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="main" id="ranking">
+  <div class="rank-wrap">
+    <div class="rank-header">
+      <div class="rank-title">健康食材 総合ランキング</div>
+      <div class="rank-updated">2026年5月更新 ／ 管理栄養士監修</div>
+    </div>
+
+    <!-- TOP3 -->
+    <div class="top3-grid">
+      <div class="tc rank1">
+        <div class="tc-header">
+          <span class="tc-num g">🥇 1位</span>
+          <span class="tc-score">98点</span>
+        </div>
+        <div class="tc-emoji">🥦</div>
+        <div class="tc-name">ブロッコリー</div>
+        <div class="tc-effect">スルフォラファンが解毒酵素を活性化。ビタミンCはレモンの2倍。抗がん作用の研究が最も進む食材。</div>
+        <div class="tc-nutri">
+          <span class="tc-n">ビタミンC</span><span class="tc-n">スルフォラファン</span>
+          <span class="tc-n">葉酸</span><span class="tc-n">食物繊維</span>
+        </div>
+      </div>
+      <div class="tc rank2">
+        <div class="tc-header">
+          <span class="tc-num s">🥈 2位</span>
+          <span class="tc-score">95点</span>
+        </div>
+        <div class="tc-emoji">🐟</div>
+        <div class="tc-name">鮭</div>
+        <div class="tc-effect">DHAとEPAで脳・心臓をサポート。アスタキサンチンがβカロテンの550倍の抗酸化力。骨を強くするビタミンDも豊富。</div>
+        <div class="tc-nutri">
+          <span class="tc-n">DHA・EPA</span><span class="tc-n">アスタキサンチン</span>
+          <span class="tc-n">ビタミンD</span><span class="tc-n">タンパク質</span>
+        </div>
+      </div>
+      <div class="tc rank3">
+        <div class="tc-header">
+          <span class="tc-num b">🥉 3位</span>
+          <span class="tc-score">92点</span>
+        </div>
+        <div class="tc-emoji">🥬</div>
+        <div class="tc-name">ほうれん草</div>
+        <div class="tc-effect">鉄分・葉酸が豊富で貧血予防に最適。βカロテン・ビタミンKで骨密度維持。妊婦・育ち盛りに特に推奨。</div>
+        <div class="tc-nutri">
+          <span class="tc-n">鉄分</span><span class="tc-n">葉酸</span>
+          <span class="tc-n">βカロテン</span><span class="tc-n">ビタミンK</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4〜10 -->
+    <div class="rank-rows">
+      <div class="rr"><div class="rr-num">4</div><div class="rr-emoji">🧄</div><div class="rr-info"><div class="rr-name">にんにく</div><div class="rr-sub">アリシンが免疫・抗菌・血行促進を同時サポート</div></div><div class="rr-right"><div class="rr-score">89</div><div class="rr-slabel">総合スコア</div></div></div>
+      <div class="rr"><div class="rr-num">5</div><div class="rr-emoji">🫐</div><div class="rr-info"><div class="rr-name">ブルーベリー</div><div class="rr-sub">アントシアニンが目・脳・血管を守る最強の抗酸化フルーツ</div></div><div class="rr-right"><div class="rr-score">87</div><div class="rr-slabel">総合スコア</div></div></div>
+      <div class="rr"><div class="rr-num">6</div><div class="rr-emoji">🫘</div><div class="rr-info"><div class="rr-name">納豆</div><div class="rr-sub">ナットウキナーゼが血栓を溶かす。腸活・骨粗鬆症予防に</div></div><div class="rr-right"><div class="rr-score">85</div><div class="rr-slabel">総合スコア</div></div></div>
+      <div class="rr"><div class="rr-num">7</div><div class="rr-emoji">🥕</div><div class="rr-info"><div class="rr-name">にんじん</div><div class="rr-sub">βカロテンが体内でビタミンAに変換。目・皮膚・免疫を守る</div></div><div class="rr-right"><div class="rr-score">83</div><div class="rr-slabel">総合スコア</div></div></div>
+      <div class="rr"><div class="rr-num">8</div><div class="rr-emoji">🫚</div><div class="rr-info"><div class="rr-name">オリーブオイル</div><div class="rr-sub">オレイン酸が悪玉コレステロールを下げ、ポリフェノールで抗炎症</div></div><div class="rr-right"><div class="rr-score">81</div><div class="rr-slabel">総合スコア</div></div></div>
+      <div class="rr"><div class="rr-num">9</div><div class="rr-emoji">🍄</div><div class="rr-info"><div class="rr-name">しいたけ</div><div class="rr-sub">β-グルカンが免疫細胞を活性化。ビタミンDを日光で増やせる唯一の食材</div></div><div class="rr-right"><div class="rr-score">79</div><div class="rr-slabel">総合スコア</div></div></div>
+      <div class="rr"><div class="rr-num">10</div><div class="rr-emoji">🥑</div><div class="rr-info"><div class="rr-name">アボカド</div><div class="rr-sub">良質な不飽和脂肪酸・ビタミンE・カリウムで美容・血圧をサポート</div></div><div class="rr-right"><div class="rr-score">77</div><div class="rr-slabel">総合スコア</div></div></div>
+    </div>
+
+    <!-- 栄養比較テーブル -->
+    <div class="nutri-section" id="nutri">
+      <div class="ns-title">📊 栄養成分・効能 比較テーブル</div>
+      <table class="nutri-table">
+        <thead>
+          <tr>
+            <th>食材</th>
+            <th>抗酸化</th>
+            <th>免疫</th>
+            <th>美容</th>
+            <th>腸活</th>
+            <th>コスパ</th>
+            <th>総合</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="nt-name">🥦 ブロッコリー</td><td>⭐⭐⭐</td><td>⭐⭐⭐</td><td>⭐⭐⭐</td><td>⭐⭐</td><td>⭐⭐⭐</td><td class="nt-score">98</td></tr>
+          <tr><td class="nt-name">🐟 鮭</td><td>⭐⭐⭐</td><td>⭐⭐</td><td>⭐⭐⭐</td><td>⭐</td><td>⭐⭐</td><td class="nt-score">95</td></tr>
+          <tr><td class="nt-name">🥬 ほうれん草</td><td>⭐⭐</td><td>⭐⭐⭐</td><td>⭐⭐</td><td>⭐⭐</td><td>⭐⭐⭐</td><td class="nt-score">92</td></tr>
+          <tr><td class="nt-name">🧄 にんにく</td><td>⭐⭐</td><td>⭐⭐⭐</td><td>⭐</td><td>⭐⭐</td><td>⭐⭐⭐</td><td class="nt-score">89</td></tr>
+          <tr><td class="nt-name">🫐 ブルーベリー</td><td>⭐⭐⭐</td><td>⭐⭐</td><td>⭐⭐⭐</td><td>⭐⭐</td><td>⭐⭐</td><td class="nt-score">87</td></tr>
+          <tr><td class="nt-name">🫘 納豆</td><td>⭐⭐</td><td>⭐⭐</td><td>⭐</td><td>⭐⭐⭐</td><td>⭐⭐⭐</td><td class="nt-score">85</td></tr>
+          <tr><td class="nt-name">🥕 にんじん</td><td>⭐⭐</td><td>⭐⭐</td><td>⭐⭐⭐</td><td>⭐⭐</td><td>⭐⭐⭐</td><td class="nt-score">83</td></tr>
+          <tr><td class="nt-name">🥑 アボカド</td><td>⭐⭐</td><td>⭐</td><td>⭐⭐⭐</td><td>⭐⭐</td><td>⭐</td><td class="nt-score">77</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="s-card">
+      <div class="s-head">💊 主な健康効能</div>
+      <div class="s-body">
+        <ul class="effect-list">
+          <li class="ef-item"><div class="ef-icon">🛡️</div>免疫力アップには発酵食品・にんにく・きのこ類が特に有効</li>
+          <li class="ef-item"><div class="ef-icon">✨</div>美肌には抗酸化力の高いブロッコリー・ブルーベリー・鮭</li>
+          <li class="ef-item"><div class="ef-icon">🧠</div>脳に良いDHAは鮭・さば・いわしなどの青魚で摂取</li>
+          <li class="ef-item"><div class="ef-icon">💪</div>腸活には納豆・キムチなどの発酵食品と食物繊維の組み合わせ</li>
+          <li class="ef-item"><div class="ef-icon">🦴</div>骨密度維持にはほうれん草・鮭・しいたけのビタミンDセット</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="s-card">
+      <div class="s-head" id="tips">👨‍🍳 栄養を活かす調理法</div>
+      <div class="s-body">
+        <ul class="cook-list">
+          <li class="cook-item">ブロッコリーは電子レンジ蒸しが栄養ロス最小</li>
+          <li class="cook-item">ほうれん草はさっと茹でて水さらしを最短に</li>
+          <li class="cook-item">にんじんは油と一緒に調理でβカロテン吸収UP</li>
+          <li class="cook-item">にんにくは切って10分置いてからアリシン活性化</li>
+          <li class="cook-item">鮭は皮ごと食べてコラーゲンも余さず摂取</li>
+          <li class="cook-item">納豆は朝食べると血栓予防効果が最大に</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="s-card">
+      <div class="s-head">⚠️ 食べ合わせ注意</div>
+      <div class="s-body">
+        <div style="font-size:0.82rem;color:var(--text2);line-height:1.85;">
+          <p style="margin-bottom:0.5rem;">🚫 ほうれん草＋豆腐→シュウ酸とカルシウムが結合して吸収率低下</p>
+          <p style="margin-bottom:0.5rem;">✅ にんじん＋レモン→ビタミンCと一緒でβカロテン吸収促進</p>
+          <p>✅ 鮭＋きのこ→ビタミンDが相乗効果で骨密度維持に最適</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="ftr">
+  <span class="ftr-logo">健康食材ガイド</span>
+  <p>管理栄養士監修 ／ 科学的根拠に基づく情報提供 ／ 2026年版</p>
+  <div class="ftr-disc">当サイトの情報は医療・栄養指導の代替ではありません。持病のある方は医師・栄養士にご相談ください。アフィリエイト広告（A8.net）を利用しています。</div>
+</footer>
+</body>
+</html>

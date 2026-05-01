@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>時短レシピ比較 | 調理時間・コスト・難易度を徹底比較</title>
+<meta name="description" content="忙しい毎日に役立つ時短レシピを調理時間・コスト・難易度・栄養バランスで徹底比較。10分以内・500円以下のレシピも多数紹介。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Noto+Sans+JP:wght@300;400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:   #0a0a0a;
+  --char:    #1e1e1e;
+  --dark:    #2d2d2d;
+  --mid:     #6b6b6b;
+  --light:   #c8c8c8;
+  --border:  #e8e8e8;
+  --white:   #ffffff;
+  --bg:      #f5f5f2;
+  --orange:  #e8531a;
+  --orange2: #ff6b35;
+  --yellow:  #f5c518;
+  --green:   #2e7d32;
+  --green-l: #e8f5e9;
+  --red:     #c62828;
+  --red-l:   #ffebee;
+  --blue:    #1565c0;
+  --blue-l:  #e3f2fd;
+  --r:       2px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Noto Sans JP',sans-serif;
+  background:var(--bg);color:var(--black);
+  font-size:15px;line-height:1.8;
+}
+
+/* ── HEADER ── */
+.hdr{
+  background:var(--black);
+  padding:0 5vw;
+  display:flex;align-items:center;justify-content:space-between;
+  height:52px;
+}
+.hdr-logo{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.5rem;color:var(--white);
+  letter-spacing:0.15em;text-decoration:none;
+  display:flex;align-items:center;gap:10px;
+}
+.hdr-logo-accent{color:var(--orange);}
+.hdr-nav{display:flex;gap:2rem;}
+.hdr-nav a{
+  font-size:0.72rem;color:rgba(255,255,255,0.5);
+  text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;
+  transition:color 0.2s;
+}
+.hdr-nav a:hover{color:var(--orange);}
+
+/* ── HERO ── */
+.hero{
+  background:var(--black);
+  padding:64px 5vw 56px;
+  position:relative;overflow:hidden;
+}
+.hero-accent{
+  position:absolute;
+  top:0;right:0;
+  width:40%;height:100%;
+  background:var(--orange);
+  clip-path:polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+  opacity:0.06;
+}
+.hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1;}
+.hero-tag{
+  font-size:0.68rem;letter-spacing:0.25em;
+  color:var(--orange);text-transform:uppercase;
+  margin-bottom:1rem;display:block;
+}
+.hero h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(3rem,7vw,6rem);
+  color:var(--white);line-height:0.95;
+  letter-spacing:0.04em;margin-bottom:1.5rem;
+}
+.hero h1 span{color:var(--orange);}
+.hero-sub{
+  color:rgba(255,255,255,0.55);
+  font-size:0.9rem;max-width:480px;font-weight:300;
+  margin-bottom:2rem;line-height:2;
+}
+.hero-pills{display:flex;gap:0.6rem;flex-wrap:wrap;}
+.pill{
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.15);
+  color:rgba(255,255,255,0.7);
+  font-size:0.75rem;padding:6px 14px;border-radius:1px;
+  letter-spacing:0.06em;
+}
+.pill.hot{background:var(--orange);border-color:var(--orange);color:var(--white);}
+
+/* ── FILTER BAR ── */
+.filter-bar{
+  background:var(--white);
+  border-bottom:2px solid var(--black);
+  padding:0 5vw;
+  overflow-x:auto;scrollbar-width:none;
+}
+.filter-bar::-webkit-scrollbar{display:none;}
+.filter-inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;gap:0;
+}
+.f-tab{
+  font-size:0.78rem;font-weight:500;letter-spacing:0.06em;
+  color:var(--mid);padding:14px 22px;
+  border-bottom:3px solid transparent;
+  cursor:pointer;transition:all 0.15s;
+  background:none;border-top:none;border-left:none;border-right:none;
+  font-family:'Noto Sans JP',sans-serif;white-space:nowrap;
+}
+.f-tab:hover{color:var(--black);}
+.f-tab.on{color:var(--orange);border-bottom-color:var(--orange);font-weight:700;}
+
+/* ── MAIN LAYOUT ── */
+.main{
+  max-width:1100px;margin:0 auto;
+  padding:2.5rem 5vw;
+  display:grid;grid-template-columns:1fr 280px;
+  gap:2.5rem;align-items:start;
+}
+
+/* ── COMPARISON TABLE ── */
+.comp-section{}
+.sec-head{
+  display:flex;align-items:baseline;gap:1rem;
+  margin-bottom:1.5rem;
+  border-bottom:2px solid var(--black);
+  padding-bottom:0.75rem;
+}
+.sec-ttl{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.5rem;letter-spacing:0.1em;color:var(--black);
+}
+.sec-count{font-size:0.78rem;color:var(--mid);}
+
+/* 比較カード */
+.recipe-cards{display:flex;flex-direction:column;gap:1px;background:var(--border);}
+
+.recipe-card{
+  background:var(--white);
+  display:grid;
+  grid-template-columns:56px auto 1fr auto;
+  align-items:center;gap:0;
+  transition:all 0.2s;
+  cursor:pointer;
+  animation:slideR 0.4s ease both;
+}
+.recipe-card:nth-child(1){animation-delay:0.05s;}
+.recipe-card:nth-child(2){animation-delay:0.1s;}
+.recipe-card:nth-child(3){animation-delay:0.15s;}
+.recipe-card:nth-child(4){animation-delay:0.2s;}
+.recipe-card:nth-child(5){animation-delay:0.25s;}
+@keyframes slideR{
+  from{opacity:0;transform:translateX(-10px);}
+  to{opacity:1;transform:translateX(0);}
+}
+.recipe-card:hover{background:#fafaf8;transform:translateX(3px);}
+.recipe-card.featured{border-left:3px solid var(--orange);}
+
+.rc-rank{
+  background:var(--black);
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.4rem;color:var(--white);
+  display:flex;align-items:center;justify-content:center;
+  align-self:stretch;padding:0 12px;
+  min-width:56px;letter-spacing:0.1em;
+}
+.rc-rank.r1{background:var(--orange);}
+.rc-rank.r2{background:var(--dark);}
+.rc-rank.r3{background:var(--mid);}
+
+.rc-emoji{
+  font-size:2.2rem;padding:1rem;
+  flex-shrink:0;
+}
+
+.rc-body{padding:1rem 0.5rem;}
+.rc-name{
+  font-size:1rem;font-weight:700;color:var(--black);
+  margin-bottom:0.25rem;
+}
+.rc-desc{font-size:0.78rem;color:var(--mid);line-height:1.6;}
+.rc-tags{display:flex;gap:0.35rem;flex-wrap:wrap;margin-top:0.5rem;}
+.rc-tag{
+  font-size:0.65rem;padding:2px 8px;border-radius:1px;font-weight:500;
+}
+.tag-easy{background:var(--green-l);color:var(--green);}
+.tag-med{background:var(--blue-l);color:var(--blue);}
+.tag-hard{background:var(--red-l);color:var(--red);}
+.tag-cheap{background:#fff8e1;color:#f57f17;}
+
+.rc-metrics{
+  padding:1rem 1.25rem;
+  display:flex;flex-direction:column;gap:0.6rem;
+  min-width:200px;flex-shrink:0;
+  border-left:1px solid var(--border);
+}
+.metric-row{display:flex;justify-content:space-between;align-items:center;gap:0.5rem;}
+.metric-label{font-size:0.68rem;color:var(--mid);letter-spacing:0.06em;white-space:nowrap;}
+.metric-val{font-size:0.82rem;font-weight:700;color:var(--black);}
+.metric-bar-outer{flex:1;background:var(--border);border-radius:1px;height:4px;overflow:hidden;}
+.metric-bar-fill{height:100%;border-radius:1px;transition:width 0.5s;}
+.bar-time{background:var(--orange);}
+.bar-cost{background:var(--yellow);}
+.bar-nutri{background:var(--green);}
+
+/* 詳細展開 */
+.rc-detail{
+  display:none;
+  background:#fafaf8;
+  border-top:1px solid var(--border);
+  grid-column:1/-1;
+  padding:1.5rem 1.5rem 1.5rem 72px;
+}
+.rc-detail.open{display:block;}
+.detail-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1.5rem;
+}
+.detail-block h4{
+  font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--mid);margin-bottom:0.5rem;
+  border-bottom:1px solid var(--border);padding-bottom:4px;
+}
+.detail-block ul{list-style:none;}
+.detail-block li{
+  font-size:0.82rem;color:var(--dark);
+  padding:4px 0;border-bottom:1px solid var(--border);
+  display:flex;justify-content:space-between;
+}
+.detail-block li span{color:var(--mid);}
+
+/* ── SIDEBAR ── */
+.sidebar{display:flex;flex-direction:column;gap:1.25rem;position:sticky;top:60px;}
+
+.s-card{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-top:3px solid var(--black);
+}
+.s-ttl{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.1rem;letter-spacing:0.12em;
+  padding:0.75rem 1.25rem;
+  border-bottom:1px solid var(--border);
+}
+.s-body{padding:1.25rem;}
+
+.score-table{width:100%;border-collapse:collapse;}
+.score-table th{
+  font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--mid);padding:6px 8px;text-align:left;
+  border-bottom:1px solid var(--border);
+}
+.score-table td{padding:8px 8px;font-size:0.8rem;border-bottom:1px solid var(--border);}
+.score-table tr:last-child td{border-bottom:none;}
+.score-badge{
+  display:inline-block;
+  background:var(--orange);color:var(--white);
+  font-size:0.7rem;font-weight:700;
+  padding:2px 8px;border-radius:1px;
+}
+
+.tip-cards{display:flex;flex-direction:column;gap:0.5rem;}
+.tip-c{
+  background:var(--bg);
+  border-left:3px solid var(--orange);
+  padding:0.75rem 1rem;
+  font-size:0.8rem;color:var(--dark);line-height:1.7;
+}
+
+@media(max-width:768px){
+  .main{grid-template-columns:1fr;}
+  .sidebar{position:static;}
+  .hdr-nav{display:none;}
+  .recipe-card{grid-template-columns:48px auto 1fr;}
+  .rc-metrics{display:none;}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <a href="/" class="hdr-logo">TIME<span class="hdr-logo-accent">COOK</span></a>
+  <nav class="hdr-nav">
+    <a href="#compare">比較</a>
+    <a href="#ranking">ランキング</a>
+    <a href="#tips">コツ</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-accent"></div>
+  <div class="hero-inner">
+    <span class="hero-tag">忙しい日の救世主 ／ 調理時間・コスト・栄養を徹底比較</span>
+    <h1>TIME IS<br><span>DELICIOUS.</span></h1>
+    <p class="hero-sub">10分でおいしい。500円で満足。<br>時短レシピを科学的な指標で比較し、あなたの毎日を変えます。</p>
+    <div class="hero-pills">
+      <div class="pill hot">🔥 10分以内</div>
+      <div class="pill">💰 500円以下</div>
+      <div class="pill">💪 高タンパク</div>
+      <div class="pill">🥗 低カロリー</div>
+      <div class="pill">👶 子ども向け</div>
+    </div>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <div class="filter-inner">
+    <button class="f-tab on" onclick="setFilter('all',this)">すべて</button>
+    <button class="f-tab" onclick="setFilter('10min',this)">10分以内</button>
+    <button class="f-tab" onclick="setFilter('cheap',this)">500円以下</button>
+    <button class="f-tab" onclick="setFilter('health',this)">ヘルシー</button>
+    <button class="f-tab" onclick="setFilter('kids',this)">子ども向け</button>
+    <button class="f-tab" onclick="setFilter('solo',this)">一人暮らし</button>
+  </div>
+</div>
+
+<div class="main" id="compare">
+  <div class="comp-section">
+    <div class="sec-head">
+      <div class="sec-ttl">時短レシピ 比較ランキング</div>
+      <div class="sec-count" id="count-label">全10レシピを表示</div>
+    </div>
+    <div class="recipe-cards" id="recipe-cards"></div>
+  </div>
+
+  <div class="sidebar">
+    <div class="s-card">
+      <div class="s-ttl">📊 評価指標の見方</div>
+      <div class="s-body">
+        <table class="score-table">
+          <thead>
+            <tr><th>指標</th><th>最高</th><th>最低</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>⏱ 調理時間</td><td>5分</td><td>30分</td></tr>
+            <tr><td>💰 コスト</td><td>¥200</td><td>¥1,200</td></tr>
+            <tr><td>⭐ 難易度</td><td>★☆☆</td><td>★★★</td></tr>
+            <tr><td>💚 栄養</td><td>95点</td><td>50点</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="s-card">
+      <div class="s-ttl">🏆 今週の総合1位</div>
+      <div class="s-body">
+        <div style="font-size:2rem;margin-bottom:0.5rem;">🥚</div>
+        <div style="font-weight:700;font-size:1rem;margin-bottom:0.3rem;">豆腐と卵の中華炒め</div>
+        <div style="font-size:0.78rem;color:var(--mid);margin-bottom:0.75rem;">調理8分 ／ ¥280 ／ タンパク質24g</div>
+        <div style="font-size:0.78rem;line-height:1.7;color:var(--dark);">コスト・栄養・時短のすべてで高評価。週3で作りたくなる一品。</div>
+      </div>
+    </div>
+
+    <div class="s-card">
+      <div class="s-ttl">💡 時短のコツ</div>
+      <div class="s-body">
+        <div class="tip-cards">
+          <div class="tip-c">冷凍野菜を常備すれば洗い・切る作業ゼロ</div>
+          <div class="tip-c">電子レンジを活用して加熱時間を半分に</div>
+          <div class="tip-c">合わせ調味料を事前に混ぜておく</div>
+          <div class="tip-c">フライパン1つで作れるレシピを選ぶ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const RECIPES = [
+  {rank:1,name:'豆腐と卵の中華炒め',emoji:'🥚',
+   desc:'タンパク質が豊富でコスパ抜群。フライパン1つで完結。冷蔵庫の常備食材だけで作れる。',
+   time:8,cost:280,diff:'easy',nutri:88,
+   tags:['easy','cheap'],
+   cats:['10min','cheap','health','solo'],
+   featured:true,
+   ingredients:['豆腐1丁','卵2個','ネギ適量','ごま油','醤油・酒'],
+   steps:['豆腐を水切りして一口大に','卵を溶いておく','ごま油で豆腐を炒め、卵を加える','調味料で味付けして完成']},
+  {rank:2,name:'鮭の照り焼き',emoji:'🐟',
+   desc:'オメガ3豊富な鮭をシンプルに。甘辛タレで子どもも大好きな定番おかず。',
+   time:12,cost:350,diff:'easy',nutri:90,
+   tags:['easy'],
+   cats:['health','kids'],
+   ingredients:['鮭切り身2切','醤油・みりん・砂糖各大1'],
+   steps:['鮭に塩をふって5分置く','合わせ調味料を作る','フライパンで焼き、タレをからめる']},
+  {rank:3,name:'ほうれん草のごま和え',emoji:'🥗',
+   desc:'電子レンジで2分。鉄分・ビタミンK豊富。副菜に迷ったらこれ一択。',
+   time:5,cost:120,diff:'easy',nutri:85,
+   tags:['easy','cheap'],
+   cats:['10min','cheap','health'],
+   ingredients:['ほうれん草1束','すりごま大2','醤油・砂糖各小1'],
+   steps:['ほうれん草をレンジ2分','冷水で冷やして水気を絞る','調味料と和えて完成']},
+  {rank:4,name:'きのこの炊き込みご飯',emoji:'🍄',
+   desc:'炊飯器にお任せの完全放置レシピ。食物繊維たっぷりで腸活にも効果的。',
+   time:10,cost:200,diff:'easy',nutri:78,
+   tags:['easy','cheap'],
+   cats:['10min','cheap','kids'],
+   featured:false,
+   ingredients:['米2合','しめじ・えのき各1パック','醤油・みりん各大2','だし汁'],
+   steps:['米を研いで炊飯器に入れる','きのこを加えて調味','普通炊飯モードでスイッチオン']},
+  {rank:5,name:'鶏むね肉のレモン蒸し',emoji:'🍋',
+   desc:'低カロリー・高タンパクの最強ダイエットレシピ。レンジで8分、しっとり仕上げるコツあり。',
+   time:8,cost:280,diff:'easy',nutri:93,
+   tags:['easy'],
+   cats:['10min','health','solo'],
+   ingredients:['鶏むね肉200g','レモン1/2個','塩・こしょう','オリーブオイル大1'],
+   steps:['鶏むね肉を薄くスライス','塩・こしょう・レモン汁・オイルで下味','ラップして電子レンジ4分＋裏返して2分']},
+  {rank:6,name:'豚肉と白菜の重ね鍋',emoji:'🫕',
+   desc:'切って重ねるだけ。白菜の水分で蒸し上げる身体温まる時短鍋。',
+   time:15,cost:450,diff:'easy',nutri:80,
+   tags:[],
+   cats:['health','kids'],},
+  {rank:7,name:'納豆キムチ丼',emoji:'🍚',
+   desc:'発酵食品ダブルで腸活効果絶大。火を使わず3分で完成する最速丼。',
+   time:3,cost:180,diff:'easy',nutri:72,
+   tags:['easy','cheap'],
+   cats:['10min','cheap','solo'],},
+  {rank:8,name:'アボカドとトマトのサラダ',emoji:'🥑',
+   desc:'切るだけ5分。良質な脂質とリコピンで美容・抗酸化効果を同時摂取。',
+   time:5,cost:320,diff:'easy',nutri:86,
+   tags:['easy'],
+   cats:['10min','health'],},
+  {rank:9,name:'さば缶とトマトのパスタ',emoji:'🍝',
+   desc:'缶詰活用で魚の栄養をお手軽に。DHAとリコピンで脳・心臓に嬉しい一皿。',
+   time:15,cost:280,diff:'med',nutri:83,
+   tags:['cheap'],
+   cats:['cheap','health','solo'],},
+  {rank:10,name:'鶏そぼろ弁当',emoji:'🍱',
+   desc:'作り置きして週3日分のお弁当に。タンパク質補給と節約を同時に実現。',
+   time:15,cost:250,diff:'easy',nutri:79,
+   tags:['cheap'],
+   cats:['cheap','kids'],},
+];
+
+let activeFilter = 'all';
+let openCard = null;
+
+function setFilter(f, el) {
+  activeFilter = f;
+  document.querySelectorAll('.f-tab').forEach(x=>x.classList.remove('on'));
+  el.classList.add('on');
+  renderCards();
+}
+
+function renderCards() {
+  const filtered = activeFilter === 'all'
+    ? RECIPES
+    : RECIPES.filter(r => r.cats && r.cats.includes(activeFilter));
+
+  document.getElementById('count-label').textContent = `全${filtered.length}レシピを表示`;
+  const wrap = document.getElementById('recipe-cards');
+  wrap.innerHTML = '';
+
+  filtered.forEach((r,i) => {
+    const diffLabel = {easy:'初心者OK',med:'中級',hard:'上級'};
+    const diffCls   = {easy:'tag-easy',med:'tag-med',hard:'tag-hard'};
+    const timePct  = Math.round((1 - (Math.min(r.time,30)-3)/27)*100);
+    const costPct  = Math.round((1 - (Math.min(r.cost,1200)-120)/1080)*100);
+    const nutriPct = r.nutri || 70;
+
+    const div = document.createElement('div');
+    div.className = `recipe-card ${r.featured?'featured':''} ${i<3?'':''}`;
+    div.innerHTML = `
+      <div class="rc-rank ${i===0?'r1':i===1?'r2':i===2?'r3':''}">${i+1}</div>
+      <div class="rc-emoji">${r.emoji}</div>
+      <div class="rc-body">
+        <div class="rc-name">${r.name}</div>
+        <div class="rc-desc">${r.desc}</div>
+        <div class="rc-tags">
+          <span class="rc-tag ${diffCls[r.diff]||'tag-easy'}">${diffLabel[r.diff]||'初心者OK'}</span>
+          ${r.tags.includes('cheap')?'<span class="rc-tag tag-cheap">💰 格安</span>':''}
+        </div>
+      </div>
+      <div class="rc-metrics">
+        <div class="metric-row">
+          <span class="metric-label">⏱ 調理時間</span>
+          <div class="metric-bar-outer"><div class="metric-bar-fill bar-time" style="width:${timePct}%"></div></div>
+          <span class="metric-val">${r.time}分</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">💰 コスト</span>
+          <div class="metric-bar-outer"><div class="metric-bar-fill bar-cost" style="width:${costPct}%"></div></div>
+          <span class="metric-val">¥${r.cost}</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">💚 栄養</span>
+          <div class="metric-bar-outer"><div class="metric-bar-fill bar-nutri" style="width:${nutriPct}%"></div></div>
+          <span class="metric-val">${r.nutri}点</span>
+        </div>
+      </div>
+    `;
+
+    if (r.ingredients) {
+      div.style.cursor = 'pointer';
+      div.addEventListener('click', () => {
+        const existing = wrap.querySelector('.rc-detail.open');
+        if (existing) { existing.classList.remove('open'); existing.remove(); }
+        if (openCard === div) { openCard = null; return; }
+        openCard = div;
+        const det = document.createElement('div');
+        det.className = 'rc-detail open';
+        det.innerHTML = `
+          <div class="detail-grid">
+            <div class="detail-block">
+              <h4>材料（2人分）</h4>
+              <ul>${(r.ingredients||[]).map(i=>`<li>${i}</li>`).join('')}</ul>
+            </div>
+            <div class="detail-block">
+              <h4>作り方</h4>
+              <ul>${(r.steps||[]).map((s,i)=>`<li><span>Step${i+1}</span>${s}</li>`).join('')}</ul>
+            </div>
+          </div>
+        `;
+        div.after(det);
+      });
+    }
+
+    wrap.appendChild(div);
+  });
+}
+
+renderCards();
+</script>
+</body>
+</html>

@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>旬菜ランキング | 今月食べるべき野菜TOP10</title>
+<meta name="description" content="管理栄養士監修。季節ごとの旬野菜を栄養価・選び方・保存法とともにランキング形式で紹介。毎月更新。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --soil:    #1c1208;
+  --bark:    #2e1f0e;
+  --earth:   #5c3d1e;
+  --ochre:   #c17f3a;
+  --wheat:   #e8c97a;
+  --sage:    #6b8f71;
+  --moss:    #3d5e42;
+  --fern:    #a8c5a0;
+  --cream:   #f9f4eb;
+  --parch:   #f2e8d5;
+  --linen:   #ede0ca;
+  --red:     #9b2335;
+  --text:    #1c1208;
+  --text2:   #4a3520;
+  --text3:   #8a7560;
+  --line:    #d8c9b0;
+  --white:   #fffdf8;
+  --r:       4px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Zen Kaku Gothic New',sans-serif;
+  background:var(--cream);color:var(--text);
+  font-size:15px;line-height:1.8;
+}
+
+/* ── HEADER ── */
+.hdr{
+  background:var(--soil);
+  padding:0 6vw;
+  display:flex;align-items:center;justify-content:space-between;
+  height:56px;
+  border-bottom:2px solid var(--ochre);
+}
+.hdr-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.4rem;color:var(--wheat);
+  letter-spacing:0.12em;text-decoration:none;
+  font-weight:600;
+}
+.hdr-nav{display:flex;gap:2rem;}
+.hdr-nav a{
+  font-size:0.75rem;color:rgba(232,201,122,0.6);
+  text-decoration:none;letter-spacing:0.12em;
+  text-transform:uppercase;transition:color 0.2s;
+}
+.hdr-nav a:hover{color:var(--wheat);}
+
+/* ── MASTHEAD ── */
+.masthead{
+  background:var(--bark);
+  padding:72px 6vw 60px;
+  position:relative;overflow:hidden;
+}
+.masthead::before{
+  content:'';
+  position:absolute;inset:0;
+  background:repeating-linear-gradient(
+    45deg,
+    transparent,transparent 40px,
+    rgba(255,255,255,0.01) 40px,rgba(255,255,255,0.01) 41px
+  );
+}
+.masthead-inner{
+  max-width:1140px;margin:0 auto;
+  display:grid;grid-template-columns:1fr auto;
+  gap:4rem;align-items:end;
+  position:relative;z-index:1;
+}
+.masthead-kicker{
+  font-size:0.72rem;letter-spacing:0.25em;
+  color:var(--ochre);text-transform:uppercase;
+  margin-bottom:1rem;display:block;
+}
+.masthead h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.5rem,6vw,4.5rem);
+  font-weight:700;color:var(--white);
+  line-height:1.1;letter-spacing:0.02em;
+  margin-bottom:1.5rem;
+}
+.masthead h1 em{
+  color:var(--wheat);font-style:italic;
+}
+.masthead-desc{
+  color:rgba(249,244,235,0.65);
+  font-size:0.92rem;max-width:520px;
+  font-weight:300;line-height:2;
+}
+.masthead-date{
+  text-align:right;
+  font-family:'Cormorant Garamond',serif;
+  color:rgba(232,201,122,0.5);
+  font-size:0.8rem;letter-spacing:0.1em;
+  white-space:nowrap;
+}
+.masthead-date strong{
+  display:block;
+  font-size:2.5rem;color:var(--ochre);
+  font-weight:600;line-height:1;
+  letter-spacing:0;
+}
+
+/* ── MONTH TABS ── */
+.month-nav{
+  background:var(--parch);
+  border-bottom:1px solid var(--line);
+  padding:0 6vw;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+.month-nav::-webkit-scrollbar{display:none;}
+.month-inner{
+  max-width:1140px;margin:0 auto;
+  display:flex;gap:0;
+}
+.m-tab{
+  font-size:0.8rem;letter-spacing:0.08em;
+  color:var(--text3);padding:14px 20px;
+  border-bottom:2px solid transparent;
+  cursor:pointer;transition:all 0.2s;
+  white-space:nowrap;background:none;border-top:none;border-left:none;border-right:none;
+  font-family:'Zen Kaku Gothic New',sans-serif;
+}
+.m-tab:hover{color:var(--earth);}
+.m-tab.on{color:var(--soil);border-bottom-color:var(--ochre);font-weight:500;}
+
+/* ── MAIN ── */
+.main{
+  max-width:1140px;margin:0 auto;
+  padding:3rem 6vw;
+  display:grid;grid-template-columns:1fr 300px;gap:3rem;
+  align-items:start;
+}
+
+/* ── RANKING LIST ── */
+.ranking-wrap{}
+
+/* TOP3 大きく */
+.top3{display:flex;flex-direction:column;gap:1.5rem;margin-bottom:2.5rem;}
+
+.top-card{
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:var(--r);
+  overflow:hidden;
+  display:grid;grid-template-columns:auto 1fr;
+  transition:box-shadow 0.25s;
+  animation:fadeUp 0.5s ease both;
+}
+.top-card:hover{box-shadow:0 8px 40px rgba(28,18,8,0.12);}
+.top-card:nth-child(1){animation-delay:0.05s;}
+.top-card:nth-child(2){animation-delay:0.1s;}
+.top-card:nth-child(3){animation-delay:0.15s;}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(16px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+.top-card.rank1{border-color:var(--ochre);border-width:2px;}
+
+.top-rank{
+  width:80px;
+  background:var(--soil);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:1.5rem 0;
+  gap:4px;
+  flex-shrink:0;
+}
+.rank-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.8rem;font-weight:700;
+  line-height:1;
+}
+.rank1 .rank-num{color:var(--wheat);}
+.rank2 .rank-num{color:#c0c0c0;}
+.rank3 .rank-num{color:#cd7f32;}
+.rank-medal{font-size:1.4rem;}
+
+.top-body{padding:1.5rem 1.75rem;display:flex;flex-direction:column;gap:0.75rem;}
+.top-season{
+  font-size:0.68rem;letter-spacing:0.18em;
+  color:var(--ochre);text-transform:uppercase;
+}
+.top-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.8rem;font-weight:700;color:var(--soil);
+  line-height:1.1;display:flex;align-items:center;gap:12px;
+}
+.top-name .vemoji{font-size:2rem;}
+.top-desc{font-size:0.85rem;color:var(--text2);line-height:1.85;max-width:500px;}
+
+.top-meta{
+  display:flex;gap:1.5rem;flex-wrap:wrap;
+  padding-top:0.75rem;
+  border-top:1px solid var(--line);
+}
+.meta-item{font-size:0.78rem;}
+.meta-label{color:var(--text3);letter-spacing:0.06em;margin-right:6px;}
+.meta-val{color:var(--text);font-weight:500;}
+
+.nutri-bars{display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.25rem;}
+.nutri-tag{
+  font-size:0.68rem;padding:3px 10px;border-radius:2px;
+  background:var(--parch);color:var(--earth);
+  border:1px solid var(--linen);font-weight:500;
+}
+
+/* 4〜10位 コンパクト */
+.rank-list{display:flex;flex-direction:column;gap:0.6rem;}
+.rank-row{
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:var(--r);
+  padding:1rem 1.25rem;
+  display:flex;align-items:center;gap:1rem;
+  transition:all 0.2s;
+  animation:fadeUp 0.5s ease both;
+}
+.rank-row:hover{box-shadow:0 4px 20px rgba(28,18,8,0.08);transform:translateX(3px);}
+.rank-row:nth-child(1){animation-delay:0.2s;}
+.rank-row:nth-child(2){animation-delay:0.25s;}
+.rank-row:nth-child(3){animation-delay:0.3s;}
+.rank-row:nth-child(4){animation-delay:0.35s;}
+.rank-row:nth-child(5){animation-delay:0.4s;}
+.rank-row:nth-child(6){animation-delay:0.45s;}
+.rank-row:nth-child(7){animation-delay:0.5s;}
+
+.rn{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.3rem;font-weight:700;color:var(--line);
+  min-width:28px;text-align:center;flex-shrink:0;
+}
+.re{font-size:1.6rem;flex-shrink:0;}
+.ri{flex:1;}
+.ri-name{
+  font-family:'Shippori Mincho',serif;
+  font-size:0.95rem;font-weight:600;color:var(--soil);
+}
+.ri-sub{font-size:0.75rem;color:var(--text3);margin-top:1px;}
+.rr{text-align:right;flex-shrink:0;}
+.rr-score{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.4rem;font-weight:700;color:var(--sage);
+}
+.rr-label{font-size:0.65rem;color:var(--text3);}
+
+/* ── SIDEBAR ── */
+.sidebar{display:flex;flex-direction:column;gap:1.5rem;position:sticky;top:70px;}
+
+.side-card{
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:var(--r);
+  overflow:hidden;
+}
+.side-head{
+  background:var(--soil);
+  padding:0.75rem 1.25rem;
+  font-family:'Cormorant Garamond',serif;
+  font-size:1rem;font-weight:600;
+  color:var(--wheat);letter-spacing:0.06em;
+  display:flex;align-items:center;gap:8px;
+}
+.side-body{padding:1.25rem;}
+
+.season-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;
+}
+.season-item{
+  background:var(--parch);border-radius:var(--r);
+  padding:0.75rem;text-align:center;
+  border:1px solid var(--linen);
+  transition:all 0.2s;cursor:pointer;
+}
+.season-item:hover{background:var(--linen);}
+.season-item.on{background:var(--soil);border-color:var(--soil);}
+.season-item.on .s-name{color:var(--wheat);}
+.season-item.on .s-emoji{filter:none;}
+.s-emoji{font-size:1.5rem;display:block;margin-bottom:2px;}
+.s-name{font-size:0.75rem;color:var(--text2);font-weight:500;}
+
+.tip-list{list-style:none;display:flex;flex-direction:column;gap:0.75rem;}
+.tip-item{
+  font-size:0.82rem;color:var(--text2);
+  padding-left:1.25rem;position:relative;line-height:1.75;
+}
+.tip-item::before{
+  content:'—';
+  position:absolute;left:0;color:var(--ochre);
+}
+
+.nutri-ranking{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.nutri-row{
+  display:flex;align-items:center;gap:0.75rem;
+  font-size:0.82rem;
+}
+.nutri-name{min-width:80px;color:var(--text2);}
+.nutri-bar-outer{flex:1;background:var(--parch);border-radius:2px;height:6px;overflow:hidden;}
+.nutri-bar-fill{height:100%;background:linear-gradient(90deg,var(--moss),var(--sage));border-radius:2px;transition:width 0.6s;}
+.nutri-score-val{font-size:0.75rem;color:var(--text3);min-width:30px;text-align:right;}
+
+/* ── ARTICLE SECTION ── */
+.article-section{
+  background:var(--parch);
+  border-top:1px solid var(--line);
+  padding:4rem 6vw;
+}
+.article-inner{max-width:1140px;margin:0 auto;}
+.article-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.6rem;font-weight:700;color:var(--soil);
+  margin-bottom:2rem;display:flex;align-items:center;gap:12px;
+}
+.article-title::after{content:'';flex:1;height:1px;background:var(--line);}
+.article-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:1.25rem;
+}
+.article-card{
+  background:var(--white);border:1px solid var(--line);
+  border-radius:var(--r);padding:1.5rem;
+  transition:all 0.22s;
+}
+.article-card:hover{box-shadow:0 6px 24px rgba(28,18,8,0.1);transform:translateY(-2px);}
+.ac-tag{
+  font-size:0.68rem;letter-spacing:0.14em;
+  color:var(--ochre);text-transform:uppercase;margin-bottom:0.5rem;display:block;
+}
+.ac-title{
+  font-family:'Shippori Mincho',serif;
+  font-size:1rem;font-weight:600;color:var(--soil);
+  line-height:1.45;margin-bottom:0.5rem;
+}
+.ac-desc{font-size:0.8rem;color:var(--text3);line-height:1.75;}
+
+/* ── FOOTER ── */
+.ftr{
+  background:var(--soil);
+  padding:2.5rem 6vw;
+  text-align:center;
+  border-top:2px solid var(--ochre);
+}
+.ftr p{font-size:0.75rem;color:rgba(232,201,122,0.4);letter-spacing:0.06em;}
+.ftr-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.2rem;color:var(--wheat);
+  margin-bottom:0.5rem;display:block;letter-spacing:0.1em;
+}
+.ftr-disc{font-size:0.7rem;color:rgba(255,255,255,0.2);margin-top:1rem;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.7;}
+
+@media(max-width:768px){
+  .main{grid-template-columns:1fr;}
+  .sidebar{position:static;}
+  .masthead-inner{grid-template-columns:1fr;}
+  .masthead-date{display:none;}
+  .hdr-nav{display:none;}
+  .top-card{grid-template-columns:60px 1fr;}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <a href="/" class="hdr-logo">旬菜ランキング</a>
+  <nav class="hdr-nav">
+    <a href="#ranking">ランキング</a>
+    <a href="#season">季節別</a>
+    <a href="#tips">選び方</a>
+    <a href="#column">コラム</a>
+  </nav>
+</header>
+
+<div class="masthead">
+  <div class="masthead-inner">
+    <div>
+      <span class="masthead-kicker">管理栄養士監修 ／ 毎月更新</span>
+      <h1>今月食べるべき<br><em>旬の野菜</em><br>ランキング</h1>
+      <p class="masthead-desc">旬の野菜は栄養価が最も高く、価格も手頃。毎月の旬を知って、より健康的でおいしい食卓を。</p>
+    </div>
+    <div class="masthead-date">
+      <span>2026年</span>
+      <strong id="cur-month">5</strong>
+      <span>月号</span>
+    </div>
+  </div>
+</div>
+
+<!-- MONTH TABS -->
+<nav class="month-nav">
+  <div class="month-inner" id="month-tabs"></div>
+</nav>
+
+<!-- MAIN -->
+<div class="main" id="ranking">
+  <div class="ranking-wrap">
+
+    <!-- TOP3 -->
+    <div class="top3" id="top3-wrap"></div>
+
+    <!-- 4〜10位 -->
+    <div class="rank-list" id="rank-list-wrap"></div>
+
+  </div>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+
+    <div class="side-card">
+      <div class="side-head">🌿 季節で探す</div>
+      <div class="side-body">
+        <div class="season-grid">
+          <div class="season-item" onclick="selectSeason('spring',this)">
+            <span class="s-emoji">🌸</span><div class="s-name">春</div>
+          </div>
+          <div class="season-item on" onclick="selectSeason('summer',this)">
+            <span class="s-emoji">☀️</span><div class="s-name">夏</div>
+          </div>
+          <div class="season-item" onclick="selectSeason('autumn',this)">
+            <span class="s-emoji">🍂</span><div class="s-name">秋</div>
+          </div>
+          <div class="season-item" onclick="selectSeason('winter',this)">
+            <span class="s-emoji">❄️</span><div class="s-name">冬</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-card">
+      <div class="side-head">💊 栄養価スコア TOP5</div>
+      <div class="side-body">
+        <ul class="nutri-ranking" id="nutri-rank"></ul>
+      </div>
+    </div>
+
+    <div class="side-card">
+      <div class="side-head">🛒 旬野菜の選び方</div>
+      <div class="side-body">
+        <ul class="tip-list">
+          <li class="tip-item">葉野菜は葉先がピンとして、みずみずしいものを</li>
+          <li class="tip-item">根菜は重みがあり、ひげ根や傷のないものが良品</li>
+          <li class="tip-item">色が鮮やかで均一なものほど新鮮で栄養価が高い</li>
+          <li class="tip-item">地元の直売所や朝市は鮮度抜群でおすすめ</li>
+          <li class="tip-item">旬の時期は流通量が多く価格も安定している</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- COLUMN -->
+<div class="article-section" id="column">
+  <div class="article-inner">
+    <div class="article-title">旬野菜コラム</div>
+    <div class="article-grid">
+      <div class="article-card">
+        <span class="ac-tag">栄養学</span>
+        <div class="ac-title">旬の野菜が栄養価で勝る科学的な理由</div>
+        <p class="ac-desc">旬の時期に収穫される野菜は、ビタミンCやβカロテンが最大2〜3倍多く含まれることが研究で明らかになっています。</p>
+      </div>
+      <div class="article-card">
+        <span class="ac-tag">保存術</span>
+        <div class="ac-title">野菜の栄養を逃さない保存・調理法</div>
+        <p class="ac-desc">水溶性ビタミンは洗いすぎや長時間の水さらしで失われます。蒸す・炒める調理法で栄養を最大限に活かしましょう。</p>
+      </div>
+      <div class="article-card">
+        <span class="ac-tag">農業</span>
+        <div class="ac-title">無農薬・有機野菜と旬の深い関係</div>
+        <p class="ac-desc">旬の時期に育てる野菜は農薬や化学肥料に頼らずとも育ちやすく、有機農業との相性が抜群です。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="ftr">
+  <span class="ftr-logo">旬菜ランキング</span>
+  <p>管理栄養士監修 ／ 毎月1日更新 ／ 2026年版</p>
+  <div class="ftr-disc">当サイトはアフィリエイト広告（A8.net）を利用しています。掲載情報は参考情報であり、医療・栄養指導の代替となるものではありません。</div>
+</footer>
+
+<script>
+const MONTHS = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+const NOW_M = new Date().getMonth();
+
+const VEGS = {
+  5: [ // 5月
+    {rank:1,name:'アスパラガス',emoji:'🌿',season:'春〜初夏',
+     desc:'春の代表格。グルタミン酸・アスパラギン酸が疲労回復をサポート。穂先がしっかり締まったものが新鮮。根元を濡れ新聞で包んで冷蔵保存が基本。',
+     nutri:['ビタミンB群','葉酸','アスパラギン酸','食物繊維'],
+     price:'手頃',cook:'炒め・茹で・グリル',score:94},
+    {rank:2,name:'そら豆',emoji:'🫘',season:'4月〜6月',
+     desc:'タンパク質・ビタミンB1が豊富な春の豆。鮮度落ちが早いので購入当日が食べごろ。塩茹でシンプルが一番おいしい食べ方。',
+     nutri:['タンパク質','ビタミンB1','鉄分','食物繊維'],
+     price:'やや高め',cook:'塩茹で・炒め・スープ',score:90},
+    {rank:3,name:'新玉ねぎ',emoji:'🧅',season:'3月〜5月',
+     desc:'辛みが少なく甘みが強い春限定の玉ねぎ。水分が多くサラダに最適。ケルセチンが血液をサラサラにする効果が注目されている。',
+     nutri:['ケルセチン','ビタミンB6','葉酸','カリウム'],
+     price:'手頃',cook:'サラダ・炒め・スープ',score:87},
+    {rank:4,name:'菜の花',emoji:'🌼',season:'2月〜4月',score:85,sub:'βカロテン・カルシウム豊富。かすかな苦みが春の味。'},
+    {rank:5,name:'春キャベツ',emoji:'🥬',season:'3月〜5月',score:83,sub:'ビタミンU（キャベジン）で胃腸をサポート。柔らかくて甘い。'},
+    {rank:6,name:'新じゃがいも',emoji:'🥔',season:'4月〜6月',score:80,sub:'皮ごと食べられビタミンCが豊富。ほくほく食感が楽しめる。'},
+    {rank:7,name:'スナップエンドウ',emoji:'🫛',season:'4月〜6月',score:78,sub:'甘くてシャキシャキ。βカロテン・ビタミンCたっぷり。'},
+    {rank:8,name:'たけのこ',emoji:'🎋',season:'3月〜5月',score:75,sub:'食物繊維・カリウムが豊富。アクは下茹でで必ず除く。'},
+    {rank:9,name:'三つ葉',emoji:'🌿',season:'通年（旬は春）',score:72,sub:'香り成分が食欲増進。βカロテン・鉄分を含む。'},
+    {rank:10,name:'うど',emoji:'🪴',season:'2月〜5月',score:68,sub:'独特の香りが春を感じさせる山菜。カリウム・食物繊維含有。'},
+  ]
+};
+
+function getData() {
+  return VEGS[5] || VEGS[5];
+}
+
+let activeMonth = NOW_M;
+
+function renderMonthTabs() {
+  const wrap = document.getElementById('month-tabs');
+  wrap.innerHTML = '';
+  MONTHS.forEach((m,i) => {
+    const btn = document.createElement('button');
+    btn.className = `m-tab ${i===activeMonth?'on':''}`;
+    btn.textContent = m;
+    btn.onclick = () => { activeMonth=i; renderMonthTabs(); renderRanking(); };
+    wrap.appendChild(btn);
+  });
+}
+
+function renderRanking() {
+  const data = getData();
+  const top3 = data.filter(v=>v.rank<=3);
+  const rest  = data.filter(v=>v.rank>3);
+
+  // TOP3
+  const t3w = document.getElementById('top3-wrap');
+  t3w.innerHTML = '';
+  top3.forEach(v => {
+    const medals = ['🥇','🥈','🥉'];
+    const div = document.createElement('div');
+    div.className = `top-card rank${v.rank}`;
+    div.innerHTML = `
+      <div class="top-rank rank${v.rank}">
+        <div class="rank-num">${v.rank}</div>
+        <div class="rank-medal">${medals[v.rank-1]}</div>
+      </div>
+      <div class="top-body">
+        <span class="top-season">${v.season}</span>
+        <div class="top-name"><span class="vemoji">${v.emoji}</span>${v.name}</div>
+        <p class="top-desc">${v.desc}</p>
+        <div class="nutri-bars">${(v.nutri||[]).map(n=>`<span class="nutri-tag">${n}</span>`).join('')}</div>
+        <div class="top-meta">
+          <div class="meta-item"><span class="meta-label">価格帯</span><span class="meta-val">${v.price}</span></div>
+          <div class="meta-item"><span class="meta-label">調理法</span><span class="meta-val">${v.cook}</span></div>
+          <div class="meta-item"><span class="meta-label">栄養スコア</span><span class="meta-val" style="color:var(--sage);font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;">${v.score}</span></div>
+        </div>
+      </div>
+    `;
+    t3w.appendChild(div);
+  });
+
+  // 4〜10
+  const rlw = document.getElementById('rank-list-wrap');
+  rlw.innerHTML = '';
+  rest.forEach(v => {
+    const div = document.createElement('div');
+    div.className = 'rank-row';
+    div.innerHTML = `
+      <div class="rn">${v.rank}</div>
+      <div class="re">${v.emoji}</div>
+      <div class="ri">
+        <div class="ri-name">${v.name}</div>
+        <div class="ri-sub">${v.sub||v.season}</div>
+      </div>
+      <div class="rr">
+        <div class="rr-score">${v.score}</div>
+        <div class="rr-label">スコア</div>
+      </div>
+    `;
+    rlw.appendChild(div);
+  });
+
+  // 栄養スコアランキング
+  const sorted = [...data].sort((a,b)=>b.score-a.score).slice(0,5);
+  const nr = document.getElementById('nutri-rank');
+  nr.innerHTML = '';
+  sorted.forEach(v => {
+    const pct = Math.round(v.score);
+    const li = document.createElement('li');
+    li.className = 'nutri-row';
+    li.innerHTML = `
+      <span class="nutri-name">${v.emoji} ${v.name}</span>
+      <div class="nutri-bar-outer"><div class="nutri-bar-fill" style="width:${pct}%"></div></div>
+      <span class="nutri-score-val">${v.score}</span>
+    `;
+    nr.appendChild(li);
+  });
+}
+
+function selectSeason(s, el) {
+  document.querySelectorAll('.season-item').forEach(x=>x.classList.remove('on'));
+  el.classList.add('on');
+}
+
+document.getElementById('cur-month').textContent = NOW_M+1;
+renderMonthTabs();
+renderRanking();
+</script>
+</body>
+</html>
